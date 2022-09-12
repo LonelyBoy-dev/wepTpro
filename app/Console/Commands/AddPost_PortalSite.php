@@ -12,24 +12,15 @@ class AddPost_PortalSite extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'post:create_website';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Add new post in website:https://www.portal.ir';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
     /**
      * Execute the console command.
@@ -38,14 +29,15 @@ class AddPost_PortalSite extends Command
      */
     public function handle()
     {
-        $post = new Post();
-        $post->title ="ghjghjhgj";
-        $post->slug = "hjghjghj";
-        $post->admin_id = '1';
-        $post->published = '1';
-        $post->image = "hjgjhgjghj";
-        $post->content = "hjghjghjg";
-        $post->save();
+
+        Post::create([
+            'title'=>'hhhh',
+            'slug'=>'hhhh',
+            'admin_id'=>'1',
+            'published'=>'1',
+            'image'=>'published',
+            'content'=>'published',
+        ]);
 
     }
 }
