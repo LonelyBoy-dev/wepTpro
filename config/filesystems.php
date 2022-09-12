@@ -52,9 +52,9 @@ return [
             'root' => storage_path('app/downloads'),
         ],
 
-        'ckeditor' => [
+        'uploads' => [
             'driver' => 'local',
-            'root' => public_path('uploads/ckeditor'),
+            'root' => public_path('uploads'),
             'url' => '/uploads/ckeditor',
             'visibility' => 'public',
         ],
