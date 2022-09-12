@@ -52,10 +52,16 @@ return [
             'root' => storage_path('app/downloads'),
         ],
 
-        'uploads' => [
+        'webTpro' => [
             'driver' => 'local',
             'root' => public_path('uploads'),
-            'url' => '/uploads/ckeditor',
+            'url' => '/uploads/webTpro',
+            'visibility' => 'public',
+        ],
+        'Designer' => [
+            'driver' => 'local',
+            'root' => public_path('uploads'),
+            'url' => '/uploads/Designer',
             'visibility' => 'public',
         ],
 
