@@ -54,13 +54,13 @@ return [
 
         'webTpro' => [
             'driver' => 'local',
-            'root' => public_path('uploads'),
+            'root' => public_path('uploads/webTpro'),
             'url' => '/uploads/webTpro',
             'visibility' => 'public',
         ],
         'Designer' => [
             'driver' => 'local',
-            'root' => public_path('uploads'),
+            'root' => public_path('uploads/Designer'),
             'url' => '/uploads/Designer',
             'visibility' => 'public',
         ],
