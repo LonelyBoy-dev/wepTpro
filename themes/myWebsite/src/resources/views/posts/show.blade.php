@@ -303,7 +303,7 @@
                 var item=this;
                 var tarr = $(item).attr('src').split('/');      // ["static","images","banner","blue.jpg"]
                 var imageName = tarr[tarr.length-1]; // "blue.jpg"
-                $(item).attr('src','{{asset('')}}uploads/posts/post-id-{{$item->id}}/'+imageName);
+                $(item).attr('src','{{asset('')}}uploads/Posts/post-id-{{$item->id}}/'+imageName);
             });
 
             $('#content a').each(function(){

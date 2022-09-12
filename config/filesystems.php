@@ -64,6 +64,12 @@ return [
             'url' => '/uploads/Designer',
             'visibility' => 'public',
         ],
+        'Posts' => [
+            'driver' => 'local',
+            'root' => public_path('uploads/Posts'),
+            'url' => '/uploads/Posts',
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',

@@ -25,7 +25,7 @@ return [
      * List of disk names that you want to use
      * (from config/filesystems)
      */
-    'diskList' => ['webTpro','Designer'],
+    'diskList' => ['Designer','Posts','webTpro'],
 
     /**
      * Default disk for left manager

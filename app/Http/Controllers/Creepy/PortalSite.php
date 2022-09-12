@@ -51,20 +51,22 @@ class PortalSite extends Controller
 
 
 
-                    Post::where('id',$post->id)->update(['image'=>'uploads/webTpro/posts/post-id-'.$post->id.'/'.$name]);
+                    Post::where('id',$post->id)->update(['image'=>'uploads/Posts/post-id-'.$post->id.'/'.$name]);
 
                     $this->save_images();
 
 
                     file_put_contents($name, $image_stream);
-
-                    if (!is_dir('uploads/webTpro/posts')) {
-                        mkdir("uploads/webTpro/posts");
+                    if (!is_dir('uploads')) {
+                        mkdir("uploads");
                     }
-                    if (!is_dir('uploads/webTpro/posts/post-id-' . $post->id)) {
-                        mkdir("uploads/webTpro/posts/post-id-" . $post->id);
+                    if (!is_dir('uploads/Posts')) {
+                        mkdir("uploads/Posts");
                     }
-                    rename($name, "uploads/webTpro/posts/post-id-" . $post->id . '/' . $name);
+                    if (!is_dir('uploads/Posts/post-id-' . $post->id)) {
+                        mkdir("uploads/Posts/post-id-" . $post->id);
+                    }
+                    rename($name, "uploads/Posts/post-id-" . $post->id . '/' . $name);
                 });
             }
         });
@@ -159,14 +161,16 @@ class PortalSite extends Controller
                 $name=$realName;
             }
             file_put_contents($name, $image_stream);
-
-            if (!is_dir('uploads/webTpro/posts')) {
-                mkdir("uploads/webTpro/posts");
+            if (!is_dir('uploads')) {
+                mkdir("uploads");
             }
-            if (!is_dir('uploads/webTpro/posts/post-id-' . $post->id)) {
-                mkdir("uploads/webTpro/posts/post-id-" . $post->id);
+            if (!is_dir('uploads/Posts')) {
+                mkdir("uploads/Posts");
             }
-            rename($name, "uploads/webTpro/posts/post-id-" . $post->id . '/' . $name);
+            if (!is_dir('uploads/Posts/post-id-' . $post->id)) {
+                mkdir("uploads/Posts/post-id-" . $post->id);
+            }
+            rename($name, "uploads/Posts/post-id-" . $post->id . '/' . $name);
 
         });
 
