@@ -1,0 +1,13 @@
+{
+    "name": "WorkSample",
+    "alias": "worksample",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\WorkSample\\Providers\\WorkSampleServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

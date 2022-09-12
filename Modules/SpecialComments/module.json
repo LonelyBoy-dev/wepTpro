@@ -1,0 +1,13 @@
+{
+    "name": "SpecialComments",
+    "alias": "specialcomments",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SpecialComments\\Providers\\SpecialCommentsServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

@@ -1,0 +1,59 @@
+#topnav .navigation-menu {
+    justify-content: right;
+    padding-right: 10%;
+}
+
+.social-icon.foot-social-icon li a {
+    border-radius: 5px;
+}
+
+.page-item.next-item, .page-item.prev-item {
+    display: contents !important;
+}
+
+
+.breadcrumb .breadcrumb-item::after {
+    content: "\F0142" !important;
+    font-size: 14px;
+    color: #3c4858;
+    font-family: 'Material Design Icons';
+    padding-left: 5px
+}
+.breadcrumb .breadcrumb-item:first-child::before{
+    content: unset;
+}
+.breadcrumb li:last-child a:before {
+    content: "\F0141";
+    font-family: 'Material Design Icons';
+    color: #fff;
+    padding: 0 6px !important
+}
+.captcha-image{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 39px;
+    border-radius: 5px 0 0 5px;
+}
+input.captcha::placeholder{
+    text-align:right;
+}
+.technologies div{
+    padding: 2px 5px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 6px;
+    font-size: 11px;
+    line-height: 23px;
+}
+.section {
+    padding: 100px 0 0;
+    position: relative;
+    direction: rtl;
+}
+.mb-100{
+    margin-bottom: 100px;
+}
+.sticky-bar{
+    top: 0;
+}
