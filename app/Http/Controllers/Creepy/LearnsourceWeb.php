@@ -21,7 +21,7 @@ class LearnsourceWeb extends Controller
             $image='https://learnsource.net'.$node->filter('.inline-block.h-40.w-full img')->attr("src");
             $post = Post::where('slug', $slug)->first();
             $link = 'https://learnsource.net' . $node->filter('.block.mt-2.tracking-tight.text-base.font-medium.text-gray-700.transition.duration-100')->attr("href");
-            dd($image);
+            session()->put('Tamneel-image',$image);
             if (empty($post)) {
 
                 $client = new Client();
@@ -30,7 +30,7 @@ class LearnsourceWeb extends Controller
 
                     $title = $item->filter('h1')->text();
                     $content = $item->filter('.myContent')->html();
-                    $image = 'https://www.portal.ir/' . $item->filter('.page-header img')->attr("src");
+                    $image = session('Tamneel-image');
                     $slug = $this->make_slug($title);
                     dd('title='.$title.'  slug='.$slug.'   link='.$image.'    text='.$content);
 
