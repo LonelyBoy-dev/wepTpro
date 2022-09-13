@@ -24,13 +24,13 @@
                         <div class="overlay rounded-top bg-dark"></div>
                     </div>
                     <div class="card-body content">
-                        <h5><a href="{{ route('front.blogs.show', ['post' => $item]) }}" class="card-title title text-dark">{{$item->title}}</a></h5>
+                        <h5><a href="{{ route('front.blogs.show', ['blog' => $item]) }}" class="card-title title text-dark">{{$item->title}}</a></h5>
                         <div class="post-meta d-flex justify-content-between mt-3">
                             <ul class="list-unstyled mb-0">
                               {{--  <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="uil uil-heart me-1"></i>33</a></li>--}}
                                 <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="uil uil-comment me-1"></i>{{$countComment}}</a></li>
                             </ul>
-                            <a href="{{ route('front.blogs.show', ['post' => $item]) }}" class="text-muted readmore">ادامه مطلب  <i class="uil uil-angle-left-b align-middle"></i></a>
+                            <a href="{{ route('front.blogs.show', ['blog' => $item]) }}" class="text-muted readmore">ادامه مطلب  <i class="uil uil-angle-left-b align-middle"></i></a>
                         </div>
                     </div>
                     <div class="author">

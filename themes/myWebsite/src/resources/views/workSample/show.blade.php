@@ -3,7 +3,7 @@
 @push('meta')
     <meta property="og:title" content="{{ $workSample->meta_title ?: $workSample->title }}" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="{{ route('front.blogs.show', ['post' => $workSample]) }}" />
+    <meta property="og:url" content="{{ route('front.blogs.show', ['blog' => $workSample]) }}" />
     <meta name="description" content="{{ $workSample->meta_description ?: $workSample->short_description }}">
     <meta name="keywords" content="{{ $workSample->getTags }}">
 

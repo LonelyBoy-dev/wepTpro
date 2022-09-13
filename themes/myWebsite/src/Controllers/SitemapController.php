@@ -48,10 +48,10 @@ class SitemapController extends Controller
 
         if (!$sitemap->isCached()) {
             $posts = Post::published()->latest('updated_at')->get();
-            foreach ($posts as $post) {
+            foreach ($posts as $blog) {
                 $sitemap->add(
-                    route('front.blogs.show', ['post' => $post]),
-                    $post->updated_at,
+                    route('front.blogs.show', ['blog' => $blog]),
+                    $blog->updated_at,
                     '0.9',
                     'weekly'
                 );

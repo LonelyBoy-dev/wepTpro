@@ -49,13 +49,13 @@
                                     <div class="overlay rounded-top bg-dark"></div>
                                 </div>
                                 <div class="card-body content">
-                                    <h5><a href="{{ route('front.blogs.show', ['post' => $item]) }}" class="card-title title text-dark">{{$item->title}}</a></h5>
+                                    <h5><a href="{{ route('front.blogs.show', ['blog' => $item]) }}" class="card-title title text-dark">{{$item->title}}</a></h5>
                                     <div class="post-meta d-flex justify-content-between mt-3">
                                         <ul class="list-unstyled mb-0">
                                           {{--  <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="uil uil-heart me-1"></i>33</a></li>--}}
                                             <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="uil uil-comment me-1"></i>{{count($item->comments)}}</a></li>
                                         </ul>
-                                        <a href="{{ route('front.blogs.show', ['post' => $item]) }}" class="text-muted readmore">ادامه مطلب  <i class="uil uil-angle-left-b align-middle"></i></a>
+                                        <a href="{{ route('front.blogs.show', ['blog' => $item]) }}" class="text-muted readmore">ادامه مطلب  <i class="uil uil-angle-left-b align-middle"></i></a>
                                     </div>
                                 </div>
                                 <div class="author">
@@ -121,8 +121,8 @@
                                 <div class="mt-4">
                                     @foreach($latest_posts as $item)
                                     <div class="clearfix post-recent">
-                                        <div class="post-recent-thumb float-start"> <a href="{{ route('front.blogs.show', ['post' => $item]) }}"> <img alt="img" src="{{asset($item->image)}}" class="img-fluid rounded"></a></div>
-                                        <div class="post-recent-content float-start"><a href="{{ route('front.blogs.show', ['post' => $item]) }}">{{ $item->title }} </a><span class="text-muted mt-2">{{ verta($item->created_at)->format('%d %B %Y') }}</span></div>
+                                        <div class="post-recent-thumb float-start"> <a href="{{ route('front.blogs.show', ['blog' => $item]) }}"> <img alt="img" src="{{asset($item->image)}}" class="img-fluid rounded"></a></div>
+                                        <div class="post-recent-content float-start"><a href="{{ route('front.blogs.show', ['blog' => $item]) }}">{{ $item->title }} </a><span class="text-muted mt-2">{{ verta($item->created_at)->format('%d %B %Y') }}</span></div>
                                     </div>
                                     @endforeach
                                 </div>
