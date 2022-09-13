@@ -102,7 +102,7 @@
                                             @endif
 
                                         <dt class="col-md-4 col-5">فناوری  :</dt>
-                                        <dd class="col-md-8 col-7 text-muted technologies">
+                                        <dd class="col-md-8 col-7 text-muted technologies p-0">
                                             @foreach($workSample->technologies as $technologies)
                                                 <div class="btn-outline-primary">
                                                     <img width="20px" height="20px" src="{{asset($technologies->image)}}">
