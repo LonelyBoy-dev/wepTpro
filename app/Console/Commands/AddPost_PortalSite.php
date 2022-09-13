@@ -92,6 +92,7 @@ class AddPost_PortalSite extends Command
                     }
                     rename($name, "uploads/Posts/post-id-" . $post->id . '/' . $name);
                 });
+                redirect('/posts/');
             }
         });
     }
