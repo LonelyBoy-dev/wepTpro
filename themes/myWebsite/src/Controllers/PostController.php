@@ -42,7 +42,7 @@ class PostController extends Controller
 
         $posts = Post::published()->whereIn('id', $cat_id)->latest()->paginate(9);
         $latest_posts    = Post::latest()->take(5)->get();
-        $categories=Category::where('type','postcat')->get();
+        $categories=Category::where('type','postcat')->orderby('ordering','asc')->get();
         $tags=Tag::where('type','post')->get();
 
         return view('front::posts.index', compact('posts','latest_posts','categories','tags'));
@@ -55,7 +55,7 @@ class PostController extends Controller
         $posts = Post::published()->where('title', 'like','%'.$request->key.'%')->latest()->paginate(10);
 
         $latest_posts    = Post::latest()->take(5)->get();
-        $categories=Category::where('type','postcat')->get();
+        $categories=Category::where('type','postcat')->orderby('ordering','asc')->get();
         $tags=Tag::where('type','post')->get();
         return view('front::posts.index', compact('posts','latest_posts','categories','tags'));
     }
@@ -69,7 +69,7 @@ class PostController extends Controller
         $posts = Post::published()->whereIn('id', $post_id)->latest()->paginate(10);
 
         $latest_posts    = Post::latest()->take(5)->get();
-        $categories=Category::where('type','postcat')->get();
+        $categories=Category::where('type','postcat')->orderby('ordering','asc')->get();
         $tags=Tag::where('type','post')->get();
         return view('front::posts.index', compact('posts','latest_posts','categories','tags','tag'));
     }
