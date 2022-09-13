@@ -8,15 +8,14 @@ use App\Models\Post;
 use App\Models\PostCategory;
 use Goutte\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Str;
 
-class PortalSite extends Controller
+class LearnsourceWeb extends Controller
 {
     public function index()
     {
         $client = new Client();
-        $crawler = $client->request('GET', 'https://www.portal.ir/blog');
+        $crawler = $client->request('GET', 'https://learnsource.net/article/List?order=latest&categoryName=%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C+%D9%88%D8%A8');
+        dd($crawler);
         $crawler->filter('.row.gutter-3.gutter-md-5.gutter-xl-6')->each(function ($node) {
             $title = $node->filter('.card-title.h3.mb-2 a')->text();
             $slug = $this->make_slug($title);
