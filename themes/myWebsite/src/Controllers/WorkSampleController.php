@@ -42,7 +42,7 @@ class WorkSampleController extends Controller
         $latest_posts    = WorkSample::latest()->take(5)->get();
         $categories=Category::where('type','postcat')->get();
         $tags=Tag::where('type','post')->get();
-        return view('front::workSample.category', compact('items','latest_posts','categories','tags'));
+        return view('front::workSample.category', compact('category','items','latest_posts','categories','tags'));
     }
     public function search(Request $request)
     {
