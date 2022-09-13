@@ -17,11 +17,14 @@ class LearnsourceWeb extends Controller
         $crawler = $client->request('GET', 'https://learnsource.net/article/List?order=latest&categoryName=%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C+%D9%88%D8%A8');
         $crawler->filter('.container.m-auto.px-4.mt-8 .grid.grid-cols-12.gap-6')->each(function ($node) {
             $title = $node->filter('.flex.flex-col a')->text();
-            dd($title);
             $slug = $this->make_slug($title);
             $post = Post::where('slug', $slug)->first();
-            $link = 'https://www.portal.ir/' . $node->filter('.text-secondary')->attr("href");
-
+            $link = 'https://learnsource.net/' . $node->filter('.block mt-2.tracking-tight.text-base.font-medium.text-gray-700.transition.duration-100 ')->attr("href");
+            dd([
+                'title'=>$title,
+                'slug'=>$slug,
+                'link'=>$link
+            ]);
             if (empty($post)) {
 
                 $client = new Client();
