@@ -10,13 +10,13 @@
                 </ul>
             </li>
         @endif
-        
+
         @break
-        
+
     @case('posts')
         @if($postcats->count())
             <li class="sub-menu">
-                <a href="{{ route('front.posts.index') }}">{{ $menu->title }}</a>
+                <a href="{{ route('front.blogs.index') }}">{{ $menu->title }}</a>
                 <ul>
                     @foreach($postcats as $category)
                         @include('front::partials.mobile-menu.child-category')
@@ -24,7 +24,7 @@
                 </ul>
             </li>
         @endif
-        
+
         @break
 
 @endswitch

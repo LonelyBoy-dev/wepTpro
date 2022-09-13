@@ -93,7 +93,7 @@ class Category extends Model
             return route('front.products.category-products', ['category' => $this]);
         }
 
-        return route('front.posts.category', ['category' => $this]);
+        return route('front.blogs.category', ['category' => $this]);
     }
 
     public function parent()

@@ -3,7 +3,7 @@
 @push('meta')
     <meta property="og:title" content="{{ $post->meta_title ?: $post->title }}" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="{{ route('front.posts.show', ['post' => $post]) }}" />
+    <meta property="og:url" content="{{ route('front.blogs.show', ['post' => $post]) }}" />
     <meta name="description" content="{{ $post->meta_description ?: $post->short_description }}">
     <meta name="keywords" content="{{ $post->getTags }}">
 
@@ -35,7 +35,7 @@
                             <nav aria-label="breadcrumb" class="d-inline-block">
                                 <ul class="breadcrumb bg-white rounded shadow mb-0">
                                     <li class="breadcrumb-item"><a href="/">صفحه اصلی</a></li>
-                                    <li class="breadcrumb-item"><a href="{{route('front.posts.index')}}">وبلاگ </a></li>
+                                    <li class="breadcrumb-item"><a href="{{route('front.blogs.index')}}">وبلاگ </a></li>
                                     <li class="breadcrumb-item active" aria-current="page">جزئیات وبلاگ</li>
                                     <li class="breadcrumb-item"></li>
                                 </ul>
@@ -197,13 +197,13 @@
                                             <div class="overlay rounded-top bg-dark"></div>
                                         </div>
                                         <div class="card-body content">
-                                            <h5><a href="{{ route('front.posts.show', ['post' => $item]) }}" class="card-title title text-dark">{{$item->title}}</a></h5>
+                                            <h5><a href="{{ route('front.blogs.show', ['post' => $item]) }}" class="card-title title text-dark">{{$item->title}}</a></h5>
                                             <div class="post-meta d-flex justify-content-between mt-3">
                                                 <ul class="list-unstyled mb-0">
                                                     {{--  <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="uil uil-heart me-1"></i>33</a></li>--}}
                                                     <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="uil uil-comment me-1"></i>{{count($item->comments)}}</a></li>
                                                 </ul>
-                                                <a href="{{ route('front.posts.show', ['post' => $item]) }}" class="text-muted readmore">ادامه مطلب  <i class="uil uil-angle-left-b align-middle"></i></a>
+                                                <a href="{{ route('front.blogs.show', ['post' => $item]) }}" class="text-muted readmore">ادامه مطلب  <i class="uil uil-angle-left-b align-middle"></i></a>
                                             </div>
                                         </div>
                                         <div class="author">
@@ -233,7 +233,7 @@
                         <div class="card-body">
                             <!-- SEARCH -->
                             <div class="widget">
-                                <form role="search" method="get" action="{{route('front.posts.search')}}">
+                                <form role="search" method="get" action="{{route('front.blogs.search')}}">
                                     <div class="input-group mb-3 border rounded">
                                         <input type="text" id="s" name="key" class="form-control border-0" style="color: aliceblue;" placeholder="جستجوی کلمه کلیدی..." value="{{@$_GET['key']}}">
                                         <button type="submit" class="input-group-text bg-transparent border-0" id="searchsubmit"><i class="uil uil-search" style="color: aliceblue"></i></button>
@@ -249,7 +249,7 @@
                                     <ul class="list-unstyled mt-4 mb-0 blog-categories">
                                         @foreach($categories as $item)
                                             @php $count=\App\Models\PostCategory::where('category_id',$item->id)->get(); @endphp
-                                            <li><a href="{{route('front.posts.category',$item->slug)}}">{{$item->title}} </a> <span class="float-end">{{count($count)}}</span></li>
+                                            <li><a href="{{route('front.blogs.category',$item->slug)}}">{{$item->title}} </a> <span class="float-end">{{count($count)}}</span></li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -263,8 +263,8 @@
                                     <div class="mt-4">
                                         @foreach($latest_posts as $item)
                                             <div class="clearfix post-recent">
-                                                <div class="post-recent-thumb float-start"> <a href="{{ route('front.posts.show', ['post' => $item]) }}"> <img alt="img" src="{{asset($item->image)}}" class="img-fluid rounded"></a></div>
-                                                <div class="post-recent-content float-start"><a href="{{ route('front.posts.show', ['post' => $item]) }}">{{ $item->title }} </a><span class="text-muted mt-2">{{ verta($item->created_at)->format('%d %B %Y') }}</span></div>
+                                                <div class="post-recent-thumb float-start"> <a href="{{ route('front.blogs.show', ['post' => $item]) }}"> <img alt="img" src="{{asset($item->image)}}" class="img-fluid rounded"></a></div>
+                                                <div class="post-recent-content float-start"><a href="{{ route('front.blogs.show', ['post' => $item]) }}">{{ $item->title }} </a><span class="text-muted mt-2">{{ verta($item->created_at)->format('%d %B %Y') }}</span></div>
                                             </div>
                                         @endforeach
                                     </div>
@@ -277,7 +277,7 @@
                                 <h5 class="widget-title">برچسب های ابری</h5>
                                 <div class="tagcloud mt-4">
                                     @foreach($tags as $tag)
-                                        <a href="{{route('front.posts.tag',$tag->slug)}}" class="rounded">{{$tag->name}}</a>
+                                        <a href="{{route('front.blogs.tag',$tag->slug)}}" class="rounded">{{$tag->name}}</a>
                                     @endforeach
                                 </div>
                             </div>

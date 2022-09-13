@@ -11,7 +11,7 @@
                        <div class="breadcrumb dt-sl">
                            <nav>
                                <a href="/">خانه</a>
-                               <a href="{{ route('front.posts.index') }}">وبلاگ</a>
+                               <a href="{{ route('front.blogs.index') }}">وبلاگ</a>
                                <a href="#">{{ $category->title }}</a>
                            </nav>
                        </div>
@@ -30,14 +30,14 @@
                                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12">
                                     <div class="post-card">
                                         <div class="post-thumbnail">
-                                            <a href="{{ route('front.posts.show', ['post' => $post]) }}">
+                                            <a href="{{ route('front.blogs.show', ['post' => $post]) }}">
                                                 <img data-src="{{ $post->image ? $post->image : theme_asset('images/blog-empty-image.jpg') }}" alt="{{ $post->title }}">
                                             </a>
                                             <span class="post-tag">{{ $post->category ? $post->category->title : 'دسته بندی نشده' }}</span>
 
                                         </div>
                                         <div class="post-title">
-                                            <a href="{{ route('front.posts.show', ['post' => $post]) }}">{{ $post->title }}</a>
+                                            <a href="{{ route('front.blogs.show', ['post' => $post]) }}">{{ $post->title }}</a>
                                             <span class="post-date">{{ verta($post->created_at)->format('%d %B %Y') }}</span>
                                         </div>
                                     </div>
