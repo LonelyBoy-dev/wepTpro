@@ -319,6 +319,7 @@
             });
 
             var content=$('#content').html();
+            console.log(content)
             var CSRF_TOKEN = '{{ csrf_token() }}';
             var url = '{{route('Creepy.portal.editPost')}}';
             var data = {_token: CSRF_TOKEN, id: {{$item->id}},content:content};
