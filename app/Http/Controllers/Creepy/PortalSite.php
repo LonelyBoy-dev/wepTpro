@@ -20,10 +20,9 @@ class PortalSite extends Controller
         $crawler->filter('.justify-content-center .align-items-stretch')->each(function ($node) {
             $title = $node->filter('.card-title.font-weight-bold a')->text();
             $slug = $this->make_slug($title);
-            $image=$node->filter('.article-col-item .img-fluid')->attr("src");
+            $image='https://www.kiantc.com/'.$node->filter('.article-col-item .img-fluid')->attr("src");
             $post = Post::where('slug', $slug)->first();
             $link =  $node->filter('.card-title.font-weight-bold a')->attr("href");
-            dd('title= '.$title.'   slug= '.$slug.'   image= '.$image.'   link= '.$link);
             session()->put('Tamneel-image',$image);
             if (empty($post)) {
 
@@ -32,9 +31,10 @@ class PortalSite extends Controller
                 $inside_post->each(function ($item) {
 
                     $title = $item->filter('h1')->text();
-                    $content = $item->filter('.myContent')->html();
+                    $content = $item->filter('.col-md-9.col-12.pr-lg-4.pl-lg-0.d-xl-0 .text-right')->html();
                     $image = session('Tamneel-image');
                     $slug = $this->make_slug($title);
+                    dd('title= '.$title.'   slug= '.$slug.'   image= '.$image.'   link= '.$content);
 
                     $image_stream = file_get_contents($image);
                     $realName = substr($image, strrpos($image, '/') + 1);
