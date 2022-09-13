@@ -21,7 +21,7 @@
 
     RewriteEngine On
     RewriteCond %{SERVER_PORT} 80
-    RewriteRule ^(.*)$ https://www.webtbro.ir/$1 [R,L]
+    RewriteRule ^(.*)$ https://webtpro.ir/$1 [R,L]
 </IfModule>
 
 <IfModule mod_deflate.c>
