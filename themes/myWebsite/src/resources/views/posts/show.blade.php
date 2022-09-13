@@ -273,6 +273,7 @@
                         <!-- پست های اخیر -->
 
                             <!-- TAG CLOUDS -->
+                            @if(count($tags))
                             <div class="widget mb-4 pb-2">
                                 <h5 class="widget-title">برچسب های ابری</h5>
                                 <div class="tagcloud mt-4">
@@ -281,6 +282,7 @@
                                     @endforeach
                                 </div>
                             </div>
+                            @endif
                             <!-- TAG CLOUDS -->
 
                         </div>
