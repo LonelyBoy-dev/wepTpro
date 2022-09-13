@@ -20,7 +20,7 @@ class PortalSite extends Controller
         $crawler->filter('.justify-content-center .align-items-stretch')->each(function ($node) {
             $title = $node->filter('.card-title.font-weight-bold a')->text();
             $slug = $this->make_slug($title);
-            $image=$node->filter('.justify-content-center .align-items-stretch .img-fluid')->attr("src");
+            $image=$node->filter('.article-col-item .img-fluid')->attr("src");
             $post = Post::where('slug', $slug)->first();
             $link =  $node->filter('.card-title.font-weight-bold a')->attr("href");
             dd('title= '.$title.'   slug= '.$slug.'   image= '.$image.'   link= '.$link);
