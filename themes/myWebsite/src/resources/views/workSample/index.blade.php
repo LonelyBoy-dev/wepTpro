@@ -35,7 +35,7 @@
     <section class="section">
         <div class="container">
 
-
+            @if(count($items))
             <div id="grid" class="row">
                 @foreach($items as $item)
                 <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2 picture-item">
@@ -75,6 +75,10 @@
                 </div><!--end col-->
                 <!-- PAGINATION END -->
             </div><!--end row-->
+
+            @else
+                <h5 class="text-center">چیزی برای نمایش وجود ندارد!</h5>
+            @endif
         </div><!--end container-->
     </section><!--end section-->
     <!-- End Works -->
