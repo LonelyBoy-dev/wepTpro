@@ -40,7 +40,7 @@ class Post extends Model
     {
         return $this->belongsTo(Admin::class);
     }
-    
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
@@ -64,7 +64,7 @@ class Post extends Model
 
     public function link()
     {
-        return route('front.posts.show', ['post' => $this]);
+        return route('front.blogs.show', ['blog' => $this]);
     }
 
     public function scopePublished($query)

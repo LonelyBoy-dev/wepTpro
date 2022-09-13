@@ -65,31 +65,30 @@ class PostController extends Controller
         return view('front::posts.index', compact('posts','latest_posts','categories','tags','tag'));
     }
 
-    public function show(Post $post)
+    public function show(Post $blog)
     {
-        dd('gg');
-        if (!$post->isShowable()) {
+        if (!$blog->isShowable()) {
             abort(404);
         }
 
-        $comments_count = $post->comments()->where('status', 'accepted')->count();
+        $comments_count = $blog->comments()->where('status', 'accepted')->count();
 
-        $post->load(['comments' => function ($query) {
+        $blog->load(['comments' => function ($query) {
             $query->whereNull('comment_id')->where('status', 'accepted')->orderby('id','desc')->with('admin');
         }]);
 
-        $post->update([
-            'view' => $post->view + 1
+        $blog->update([
+            'view' => $blog->view + 1
         ]);
         $most_view_posts = Post::orderBy('view', 'desc')->take(5)->get();
         $latest_posts    = Post::latest()->take(5)->get();
         $latest_posts_2    = Post::latest()->take(2)->get();
         $categories=Category::where('type','postcat')->get();
         $tags=Tag::where('type','post')->get();
-        return view('front::posts.show', compact('post', 'comments_count', 'most_view_posts', 'latest_posts','latest_posts','latest_posts_2','categories','tags'));
+        return view('front::posts.show', compact('blog', 'comments_count', 'most_view_posts', 'latest_posts','latest_posts','latest_posts_2','categories','tags'));
     }
 
-    public function comments(Post $post, Request $request)
+    public function comments(Post $blog, Request $request)
     {
         $this->validate($request, [
             'body'       => 'required|string|max:1000',
@@ -100,11 +99,11 @@ class PostController extends Controller
                 }),
             ],
         ]);
-        $comment = $post->comments()->create([
+        $comment = $blog->comments()->create([
             'body'       => $request->body,
             'name'       => $request->name,
             'email'       => $request->email,
-            'commentable_id'       => $post->id,
+            'commentable_id'       => $blog->id,
             'commentable_type'       => "App\Models\Post",
             'comment_id' => $request->comment_id,
         ]);
@@ -115,6 +114,6 @@ class PostController extends Controller
             ]);
         }
         session()->put('success','نظر شما با موفقیت ثبت شد و بعد از تایید مدیر در سایت نمایش داه می شود.');
-        return redirect('/posts/'.$post->slug.'/#comment');
+        return redirect('/blogs/'.$blog->slug.'/#comment');
     }
 }

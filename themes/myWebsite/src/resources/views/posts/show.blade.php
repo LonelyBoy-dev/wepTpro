@@ -1,14 +1,14 @@
-@extends('front::layouts.master', ['title' => $post->meta_title ?: $post->title])
+@extends('front::layouts.master', ['title' => $blog->meta_title ?: $blog->title])
 
 @push('meta')
-    <meta property="og:title" content="{{ $post->meta_title ?: $post->title }}" />
+    <meta property="og:title" content="{{ $blog->meta_title ?: $blog->title }}" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="{{ route('front.blogs.show', ['blog' => $post]) }}" />
-    <meta name="description" content="{{ $post->meta_description ?: $post->short_description }}">
-    <meta name="keywords" content="{{ $post->getTags }}">
+    <meta property="og:url" content="{{ route('front.blogs.show', ['blog' => $blog]) }}" />
+    <meta name="description" content="{{ $blog->meta_description ?: $blog->short_description }}">
+    <meta name="keywords" content="{{ $blog->getTags }}">
 
-    @if ($post->image)
-        <meta property="og:image" content="{{ asset($post->image) }}">
+    @if ($blog->image)
+        <meta property="og:image" content="{{ asset($blog->image) }}">
     @endif
 
 @endpush
@@ -21,14 +21,14 @@
             <div class="row justify-content-center">
                 <div class="col-lg-12 text-center">
                     <div class="page-next-level">
-                        <h1 style="font-size: 36px !important;"> {{$post->title}} </h1>
+                        <h1 style="font-size: 36px !important;"> {{$blog->title}} </h1>
                         <ul class="list-unstyled mt-4">
-                            <li class="list-inline-item h6 user text-muted me-2"><i class="mdi mdi-account"></i> {{$post->admin->fullname}}</li>
+                            <li class="list-inline-item h6 user text-muted me-2"><i class="mdi mdi-account"></i> {{$blog->admin->fullname}}</li>
                             <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i>
-                                @if($post->publish_date)
-                                    {{Verta::instance($post->publish_date)->format(' %d %B %Y')}}
+                                @if($blog->publish_date)
+                                    {{Verta::instance($blog->publish_date)->format(' %d %B %Y')}}
                                 @else
-                                    {{Verta::instance($post->created_at)->format(' %d %B %Y')}}
+                                    {{Verta::instance($blog->created_at)->format(' %d %B %Y')}}
                                 @endif</li>
                         </ul>
                         <div class="page-next">
@@ -66,7 +66,7 @@
                 <div class="col-lg-8 col-md-6">
                     <div class="card blog blog-detail border-0 shadow rounded">
                         <div id="content" class="card-body content">
-                           <?= $post->content ?>
+                           <?= $blog->content ?>
                         </div>
                         <div id="comment">
 
@@ -85,7 +85,7 @@
 
                             <h5 class="card-title mb-0">ارسال نظر :</h5>
 
-                            <form class="mt-3" method="post" action="{{route('front.post.comments', ['post' => $post])}}">
+                            <form class="mt-3" method="post" action="{{route('front.blog.comments', ['blog' => $blog])}}">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-12">
@@ -129,13 +129,13 @@
 
                     </div>
 
-                    @if($post->comments->count())
+                    @if($blog->comments->count())
                     <div class="card shadow rounded border-0 mt-4">
                         <div class="card-body">
                             <h5 class="card-title mb-0">نظرات :</h5>
 
                             <ul class="media-list list-unstyled mb-0">
-                                @foreach($post->comments as $item)
+                                @foreach($blog->comments as $item)
                                 <li class="mt-4">
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex align-items-center">
