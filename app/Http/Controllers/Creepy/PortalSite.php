@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Creepy;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\PostCategory;
 use Goutte\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -49,6 +51,16 @@ class PortalSite extends Controller
                     $post->image = $image;
                     $post->content = $content;
                     $post->save();
+
+                    $category_id=Category::where('slug','همه-مقالات')->first();
+                    $category=PostCategory::where(['post_id'=>$post->id,'category_id'=>$category_id->id])->first();
+                    if (!$category){
+                        $category=new PostCategory();
+                        $category->post_id=$post->id;
+                        $category->category_id=$category_id->id;
+                        $category->save();
+                    }
+
 
 
 
