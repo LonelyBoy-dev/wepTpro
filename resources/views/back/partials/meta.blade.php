@@ -7,9 +7,7 @@
 <meta name="author" content="laravel shop">
 <meta name="robots" content="noindex, nofollow">
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<link rel="apple-touch-icon" href="{{ asset('back/app-assets/images/ico/apple-icon-120.png') }}">
-<link rel="shortcut icon" type="image/x-icon" href="{{ asset('back/app-assets/images/ico/favicon-32x32.png') }}">
-
+<link rel="icon" type="image/png" sizes="16x16" href="{{ option('info_icon', theme_asset('images/favicon-32x32.png')) }}">
 <!-- GCM Manifest (optional if VAPID is used) -->
 @if (config('webpush.gcm.sender_id'))
     <link rel="manifest" href="{{ asset('manifest.json') }}">
