@@ -126,8 +126,7 @@
                                         <div class="col-12">
                                             <div class="mb-3">
                                                 <label class="form-label">شماره موبایل </label>
-                                                <div class="form-icon position-relative">
-                                                    <i class="uil uil-phone d-block rounded h3 mb-0"></i>
+                                                <div class="form-icon position-relative"> <i data-feather="book" class="fea icon-sm icons"></i><i class="uil uil-phone d-block rounded h3 mb-0"></i>
                                                     <input name="mobile" id="mobile" class="form-control ps-5" placeholder="شماره موبایل  :" value="{{old('mobile')}}">
                                                 </div>
                                             </div>
