@@ -311,11 +311,7 @@
             $('#content a').each(function(){
                 var item=this;
                 console.log(item);
-                var attr=$(item).attr('rel').split(' ');
-
-                if (attr[0]=='noopener' || attr[1]=='noreferrer'){
-                    $(item).removeAttr('href');
-                }
+                $(item).removeAttr('href');
             });
 
             var content=$('#content').html();
