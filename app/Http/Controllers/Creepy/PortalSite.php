@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Goutte\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 
 class PortalSite extends Controller
@@ -67,7 +68,7 @@ class PortalSite extends Controller
                         mkdir("uploads/Posts/post-id-" . $post->id);
                     }
                     rename($name, "uploads/Posts/post-id-" . $post->id . '/' . $name);
-                    return redirect()->route('login');
+                    Redirect::route('login');
                 });
 
             }
