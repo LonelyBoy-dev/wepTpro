@@ -45,7 +45,7 @@
                         <div class="col-lg-6 col-md-12 mb-4 pb-2">
                             <div class="card blog rounded border-0 shadow">
                                 <div class="position-relative">
-                                    <img src="{{asset($item->image)}}" class="card-img-top rounded-top" alt="{{$item->title}}">
+                                    <img src="{{asset($item->image)}}" style="height: 200px" class="card-img-top rounded-top" alt="{{$item->title}}">
                                     <div class="overlay rounded-top bg-dark"></div>
                                 </div>
                                 <div class="card-body content">
