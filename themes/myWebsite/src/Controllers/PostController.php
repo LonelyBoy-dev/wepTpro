@@ -92,7 +92,7 @@ class PostController extends Controller
         $most_view_posts = Post::orderBy('view', 'desc')->take(5)->get();
         $latest_posts    = Post::latest()->take(5)->get();
         $latest_posts_2    = Post::latest()->take(2)->get();
-        $categories=Category::where('type','postcat')->get();
+        $categories=Category::where('type','postcat')->orderby('ordering','desc')->get();
         $tags=Tag::where('type','post')->get();
         return view('front::posts.show', compact('blog', 'comments_count', 'most_view_posts', 'latest_posts','latest_posts','latest_posts_2','categories','tags'));
     }
