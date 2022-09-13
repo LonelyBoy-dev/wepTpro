@@ -150,7 +150,7 @@
                 <!-- END SIDEBAR -->
             </div><!--end row-->
             @else
-            <h5>چیزی برای نمایش وجود ندارد!</h5>
+            <h5 class="text-center">چیزی برای نمایش وجود ندارد!</h5>
             @endif
         </div><!--end container-->
     </section><!--end section-->
