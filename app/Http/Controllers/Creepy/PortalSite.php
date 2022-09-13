@@ -53,7 +53,6 @@ class PortalSite extends Controller
                     $post->save();
 
                     $category_id=Category::where('slug',"همه-مقالات")->first();
-                    dd($category_id);
                     $category=PostCategory::where(['post_id'=>$post->id,'category_id'=>$category_id->id])->first();
 
                     if (!$category){
