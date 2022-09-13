@@ -23,6 +23,7 @@ class ContactController extends Controller
         $this->validate($request, [
             'name'    => 'required|string|max:191',
             'email'   => 'required|string|email|max:191',
+            'mobile'   => 'nullable',
             'subject' => 'required|string|max:191',
             'captcha' => ['required', 'captcha'],
             'message' => 'required|string|max:2000',
