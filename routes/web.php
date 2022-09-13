@@ -316,9 +316,6 @@ Route::post('subscriptions/delete', [PushSubscriptionController::class, 'destroy
 Route::get('/Creepy/webSite/portal', [PortalSite::class, 'index']);
 Route::post('/Creepy/webSite/portal/edit-post', [PortalSite::class, 'editPost'])->name('Creepy.portal.editPost');
 
-Route::get('/Creepy/webSite/Learnsource', [LearnsourceWeb::class, 'index']);
-Route::post('/Creepy/webSite/Learnsource/edit-post', [LearnsourceWeb::class, 'editPost'])->name('Creepy.portal.editPost');
-
 // Manifest file (optional if VAPID is used)
 Route::get('manifest.json', function () {
     return [
