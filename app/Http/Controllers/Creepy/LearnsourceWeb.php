@@ -32,7 +32,6 @@ class LearnsourceWeb extends Controller
                     $content = $item->filter('.myContent')->html();
                     $image = session('Tamneel-image');
                     $slug = $this->make_slug($title);
-                    dd('title='.$title.'  slug='.$slug.'   link='.$image.'    text='.$content);
 
                     $image_stream = file_get_contents($image);
                     $realName = substr($image, strrpos($image, '/') + 1);
@@ -42,7 +41,7 @@ class LearnsourceWeb extends Controller
                     }else{
                         $name=$realName;
                     }
-
+                    dd($name);
                     $post = new Post();
                     $post->title = $title;
                     $post->slug = $slug;
