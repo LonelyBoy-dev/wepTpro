@@ -18,9 +18,10 @@ class LearnsourceWeb extends Controller
         $crawler->filter('.container.m-auto.px-4.mt-8 .grid.grid-cols-12.gap-6')->each(function ($node) {
             $title = $node->filter('.flex.flex-col a')->text();
             $slug = $this->make_slug($title);
+            $image='https://learnsource.net'.$node->filter('.inline-block.h-40.w-full img')->attr("src");
             $post = Post::where('slug', $slug)->first();
-            $link = 'https://learnsource.net/' . $node->filter('.block.mt-2.tracking-tight.text-base.font-medium.text-gray-700.transition.duration-100')->attr("href");
-            dd('title='.$title.'  slug='.$slug.'   link='.$link);
+            $link = 'https://learnsource.net' . $node->filter('.block.mt-2.tracking-tight.text-base.font-medium.text-gray-700.transition.duration-100')->attr("href");
+            dd($image);
             if (empty($post)) {
 
                 $client = new Client();
@@ -28,9 +29,10 @@ class LearnsourceWeb extends Controller
                 $inside_post->each(function ($item) {
 
                     $title = $item->filter('h1')->text();
-                    $content = $item->filter('.blog-single-content')->html();
+                    $content = $item->filter('.myContent')->html();
                     $image = 'https://www.portal.ir/' . $item->filter('.page-header img')->attr("src");
                     $slug = $this->make_slug($title);
+                    dd('title='.$title.'  slug='.$slug.'   link='.$image.'    text='.$content);
 
                     $image_stream = file_get_contents($image);
                     $realName = substr($image, strrpos($image, '/') + 1);
