@@ -97,7 +97,61 @@ class AddPost_PortalSite extends Command
             }
         });
     }
-    function make_slug($string, $separator = '-') {
+
+
+    public function save_images()
+    {
+        $client = new Client();
+        $crawler = $client->request('GET', 'https://www.portal.ir/blog');
+        $link = 'https://www.portal.ir/' . $crawler->filter('.card-title a')->attr("href");
+
+        $client = new Client();
+        $inside_post = $client->request('GET', $link);
+
+        $inside_post->filter('.justify-content-center .col-12.col-lg img')->each(function ($img) {
+
+            $client = new Client();
+            $crawler = $client->request('GET', 'https://www.portal.ir/blog');
+            $title = $crawler->filter('.card-title.h3.mb-2 a')->text();
+
+            $slug = $this->make_slug($title);
+            $post = Post::where('slug', $slug)->first();
+
+            $image = 'https://www.portal.ir/' . $img->attr("src");
+
+            $image_stream = file_get_contents($image);
+            $realName = substr($image, strrpos($image, '/') + 1);
+            $name=explode('?',$realName);
+            if (count($name)){
+                $name=$name[0];
+            }else{
+                $name=$realName;
+            }
+            file_put_contents($name, $image_stream);
+            if (!is_dir('uploads')) {
+                mkdir("uploads");
+            }
+            if (!is_dir('uploads/Posts')) {
+                mkdir("uploads/Posts");
+            }
+            if (!is_dir('uploads/Posts/post-id-' . $post->id)) {
+                mkdir("uploads/Posts/post-id-" . $post->id);
+            }
+            rename($name, "uploads/Posts/post-id-" . $post->id . '/' . $name);
+
+        });
+
+    }
+
+    public function editPost(Request $request)
+    {
+        $post=Post::find($request->id);
+        $post->content=$request->input('content');
+        $post->edit="YES";
+        $post->save();
+    }
+
+    public function make_slug($string, $separator = '-') {
         $_transliteration = ["/ö|œ/" => "e",
             "/ü/" => "e",
             "/Ä/" => "e",
@@ -157,57 +211,4 @@ class AddPost_PortalSite extends Command
         unset($_transliteration);
         return preg_replace(array_keys($map), array_values($map), $string);
     }
-
-    public function save_images()
-    {
-        $client = new Client();
-        $crawler = $client->request('GET', 'https://www.portal.ir/blog');
-        $link = 'https://www.portal.ir/' . $crawler->filter('.card-title a')->attr("href");
-
-        $client = new Client();
-        $inside_post = $client->request('GET', $link);
-
-        $inside_post->filter('.justify-content-center .col-12.col-lg img')->each(function ($img) {
-
-            $client = new Client();
-            $crawler = $client->request('GET', 'https://www.portal.ir/blog');
-            $title = $crawler->filter('.card-title.h3.mb-2 a')->text();
-
-            $slug = $this->make_slug($title);
-            $post = Post::where('slug', $slug)->first();
-
-            $image = 'https://www.portal.ir/' . $img->attr("src");
-
-            $image_stream = file_get_contents($image);
-            $realName = substr($image, strrpos($image, '/') + 1);
-            $name=explode('?',$realName);
-            if (count($name)){
-                $name=$name[0];
-            }else{
-                $name=$realName;
-            }
-            file_put_contents($name, $image_stream);
-            if (!is_dir('uploads')) {
-                mkdir("uploads");
-            }
-            if (!is_dir('uploads/Posts')) {
-                mkdir("uploads/Posts");
-            }
-            if (!is_dir('uploads/Posts/post-id-' . $post->id)) {
-                mkdir("uploads/Posts/post-id-" . $post->id);
-            }
-            rename($name, "uploads/Posts/post-id-" . $post->id . '/' . $name);
-
-        });
-
-    }
-
-    public function editPost(Request $request)
-    {
-        $post=Post::find($request->id);
-        $post->content=$request->input('content');
-        $post->edit="YES";
-        $post->save();
-    }
-
 }
