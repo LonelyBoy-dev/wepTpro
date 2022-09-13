@@ -91,11 +91,14 @@ class AddPost_PortalSite extends Command
                         mkdir("uploads/Posts/post-id-" . $post->id);
                     }
                     rename($name, "uploads/Posts/post-id-" . $post->id . '/' . $name);
-                    return redirect()->route('front.blogs.show', ['blog' => $post]);
                 });
 
             }
         });
+        $post = Post::latest()->first();
+        if ($post->edit!="YES"){
+            return redirect()->route('front.blogs.show', ['blog' => $post]);
+        }
     }
 
 
