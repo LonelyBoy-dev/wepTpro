@@ -77,7 +77,7 @@ class LearnsourceWeb extends Controller
                         mkdir("uploads/Posts/post-id-" . $post->id);
                     }
                     rename($name, "uploads/Posts/post-id-" . $post->id . '/' . $name);
-
+                    session()->forget('Tamneel-image');
                 });
 
             }
