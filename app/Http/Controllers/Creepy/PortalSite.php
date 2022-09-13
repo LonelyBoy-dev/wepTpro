@@ -56,10 +56,10 @@ class PortalSite extends Controller
                     $category=PostCategory::where(['post_id'=>$post->id,'category_id'=>$category_id->id])->first();
 
                     if (!$category){
-                        $category=new PostCategory();
-                        $category->post_id=$post->id;
-                        $category->category_id=$category_id->id;
-                        $category->save();
+                        Category::create([
+                            'post_id'=>$post->id,
+                            'category_id'=>$category_id->id
+                        ]);
                     }
 
 
