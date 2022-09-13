@@ -308,6 +308,8 @@
                 $(item).attr('src','{{asset('')}}uploads/Posts/post-id-{{$item->id}}/'+imageName);
             });
 
+            $('p a .img-responsive.img-fluid').remove();
+
             $('#content a').each(function(){
                 var item=this;
                 $(item).removeAttr('href');
