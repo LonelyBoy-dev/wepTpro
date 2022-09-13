@@ -121,7 +121,6 @@ class PortalSite extends Controller
             $post = Post::where('slug', $slug)->first();
 
             $image = 'https://www.kiantc.com/' . $img->attr("src");
-            dd($image);
             $image_stream = file_get_contents($image);
             $realName = substr($image, strrpos($image, '/') + 1);
             $name=explode('?',$realName);
