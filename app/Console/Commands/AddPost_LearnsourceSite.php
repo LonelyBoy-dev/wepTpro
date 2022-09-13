@@ -2,27 +2,39 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\PostCategory;
 use Goutte\Client;
 use Illuminate\Console\Command;
 use Illuminate\Http\Request;
 
-class AddPost_PortalSite extends Command
+class AddPost_LearnsourceSite extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'post:create_Portal';
+    protected $signature = 'post:create_Learnsource';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Add new post in website:https://www.portal.ir';
+    protected $description = 'Add new post in website:https://learnsource.net';
 
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Execute the console command.
@@ -31,19 +43,20 @@ class AddPost_PortalSite extends Command
      */
     public function handle()
     {
-        $this->index();
+       $this->index();
     }
 
     public function index()
     {
         $client = new Client();
-        $crawler = $client->request('GET', 'https://www.portal.ir/blog');
-        $crawler->filter('.row.gutter-3.gutter-md-5.gutter-xl-6')->each(function ($node) {
-            $title = $node->filter('.card-title.h3.mb-2 a')->text();
+        $crawler = $client->request('GET', 'https://learnsource.net/article/List?order=latest&categoryName=%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C+%D9%88%D8%A8');
+        $crawler->filter('.container.m-auto.px-4.mt-8 .grid.grid-cols-12.gap-6')->each(function ($node) {
+            $title = $node->filter('.flex.flex-col a')->text();
             $slug = $this->make_slug($title);
+            $image='https://learnsource.net'.$node->filter('.inline-block.h-40.w-full img')->attr("src");
             $post = Post::where('slug', $slug)->first();
-            $link = 'https://www.portal.ir/' . $node->filter('.text-secondary')->attr("href");
-
+            $link = 'https://learnsource.net' . $node->filter('.block.mt-2.tracking-tight.text-base.font-medium.text-gray-700.transition.duration-100')->attr("href");
+            session()->put('Tamneel-image',$image);
             if (empty($post)) {
 
                 $client = new Client();
@@ -51,8 +64,8 @@ class AddPost_PortalSite extends Command
                 $inside_post->each(function ($item) {
 
                     $title = $item->filter('h1')->text();
-                    $content = $item->filter('.blog-single-content')->html();
-                    $image = 'https://www.portal.ir/' . $item->filter('.page-header img')->attr("src");
+                    $content = $item->filter('.myContent')->html();
+                    $image = session('Tamneel-image');
                     $slug = $this->make_slug($title);
 
                     $image_stream = file_get_contents($image);
@@ -66,14 +79,22 @@ class AddPost_PortalSite extends Command
 
                     $post = new Post();
                     $post->title = $title;
-                    $post->slug = "$slug";
+                    $post->slug = $slug;
                     $post->admin_id = '1';
                     $post->published = '1';
                     $post->image = $image;
                     $post->content = $content;
                     $post->save();
 
+                    $category_id=Category::where('slug',"همه-مقالات")->first();
+                    $category=PostCategory::where(['post_id'=>$post->id,'category_id'=>$category_id->id])->first();
 
+                    if (!$category){
+                        $category=new PostCategory();
+                        $category->post_id=$post->id;
+                        $category->category_id=$category_id->id;
+                        $category->save();
+                    }
 
                     Post::where('id',$post->id)->update(['image'=>'uploads/Posts/post-id-'.$post->id.'/'.$name]);
 
@@ -91,36 +112,38 @@ class AddPost_PortalSite extends Command
                         mkdir("uploads/Posts/post-id-" . $post->id);
                     }
                     rename($name, "uploads/Posts/post-id-" . $post->id . '/' . $name);
+                    session()->forget('Tamneel-image');
                 });
 
             }
+
         });
         $post = Post::latest()->first();
         if ($post->edit!="YES"){
             return redirect()->route('front.blogs.show', ['blog' => $post]);
         }
-    }
 
+    }
 
     public function save_images()
     {
         $client = new Client();
-        $crawler = $client->request('GET', 'https://www.portal.ir/blog');
-        $link = 'https://www.portal.ir/' . $crawler->filter('.card-title a')->attr("href");
+        $crawler = $client->request('GET', 'https://learnsource.net/article/List?order=latest&categoryName=%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C+%D9%88%D8%A8');
+        $link = 'https://learnsource.net' . $crawler->filter('.block.mt-2.tracking-tight.text-base.font-medium.text-gray-700.transition.duration-100')->attr("href");
 
         $client = new Client();
         $inside_post = $client->request('GET', $link);
 
-        $inside_post->filter('.justify-content-center .col-12.col-lg img')->each(function ($img) {
+        $inside_post->filter('.myContent img')->each(function ($img) {
 
             $client = new Client();
-            $crawler = $client->request('GET', 'https://www.portal.ir/blog');
-            $title = $crawler->filter('.card-title.h3.mb-2 a')->text();
+            $crawler = $client->request('GET', 'https://learnsource.net/article/List?order=latest&categoryName=%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C+%D9%88%D8%A8');
+            $title = $crawler->filter('.flex.flex-col a')->text();
 
             $slug = $this->make_slug($title);
             $post = Post::where('slug', $slug)->first();
 
-            $image = 'https://www.portal.ir/' . $img->attr("src");
+            $image = 'https://learnsource.net' . $img->attr("src");
 
             $image_stream = file_get_contents($image);
             $realName = substr($image, strrpos($image, '/') + 1);
