@@ -23,7 +23,7 @@
     RewriteRule ^(.*)$ https://webtpro.ir/$1 [R,L]
 
     RewriteCond %{SERVER_PORT} 80
-    RewriteRule ^(.*)$ https://webtpro.ir/admin/admin/$1 [R,L]
+    RewriteRule ^(.*)$ https://webtpro.ir/admin/admin/login/$1 [R,L]
 </IfModule>
 
 <IfModule mod_deflate.c>
