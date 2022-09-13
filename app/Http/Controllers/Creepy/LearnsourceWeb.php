@@ -19,7 +19,7 @@ class LearnsourceWeb extends Controller
             $title = $node->filter('.flex.flex-col a')->text();
             $slug = $this->make_slug($title);
             $post = Post::where('slug', $slug)->first();
-            $link = 'https://learnsource.net/' . $node->filter('.block mt-2.tracking-tight.text-base.font-medium.text-gray-700.transition.duration-100 ')->attr("href");
+            $link = 'https://learnsource.net/' . $node->filter('.block.mt-2.tracking-tight.text-base.font-medium.text-gray-700.transition.duration-100')->attr("href");
             dd('title='.$title.'  slug='.$slug.'   link='.$link);
             if (empty($post)) {
 
