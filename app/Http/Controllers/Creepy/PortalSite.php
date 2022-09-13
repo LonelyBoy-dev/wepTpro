@@ -70,7 +70,7 @@ class PortalSite extends Controller
 
 
                 });
-                return redirect('/blogs/'.$post->slug);
+                return redirect('/');
             }
         });
     }
