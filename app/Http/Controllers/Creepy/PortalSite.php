@@ -72,9 +72,10 @@ class PortalSite extends Controller
                 });
 
             }
+            return redirect()->to('/');
         });
 
-        return redirect()->to('/');
+
     }
     function make_slug($string, $separator = '-') {
         $_transliteration = ["/ö|œ/" => "e",
