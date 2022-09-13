@@ -20,11 +20,7 @@ class LearnsourceWeb extends Controller
             $slug = $this->make_slug($title);
             $post = Post::where('slug', $slug)->first();
             $link = 'https://learnsource.net/' . $node->filter('.block mt-2.tracking-tight.text-base.font-medium.text-gray-700.transition.duration-100 ')->attr("href");
-            dd([
-                'title'=>$title,
-                'slug'=>$slug,
-                'link'=>$link
-            ]);
+            dd('title='.$title.'  slug='.$slug.'   link='.$link);
             if (empty($post)) {
 
                 $client = new Client();
