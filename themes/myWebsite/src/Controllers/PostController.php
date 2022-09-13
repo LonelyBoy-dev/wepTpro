@@ -36,6 +36,7 @@ class PostController extends Controller
         $latest_posts    = Post::latest()->take(5)->get();
         $categories=Category::where('type','postcat')->get();
         $tags=Tag::where('type','post')->get();
+        dd($posts);
         return view('front::posts.index', compact('posts','latest_posts','categories','tags'));
     }
     public function search(Request $request)
