@@ -67,10 +67,10 @@ class PortalSite extends Controller
                         mkdir("uploads/Posts/post-id-" . $post->id);
                     }
                     rename($name, "uploads/Posts/post-id-" . $post->id . '/' . $name);
-
-
+                    sleep(1);
+                    return redirect('/');
                 });
-                return redirect('/');
+
             }
         });
     }
