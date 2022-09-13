@@ -25,11 +25,11 @@ Route::group(['as' => 'front.'], function () {
     Route::get('/get-new-captcha', [MainController::class, 'captcha']);
 
     // ------------------ posts
-    Route::get('blogs/search', [PostController::class, 'search'])->name('posts.search');
+    Route::get('blogs/search', [PostController::class, 'search'])->name('blogs.search');
     Route::resource('blogs', PostController::class)->only(['index', 'show']);
-    Route::get('blogs/category/{category}', [PostController::class, 'category'])->name('posts.category');
+    Route::get('blogs/category/{category}', [PostController::class, 'category'])->name('blogs.category');
     Route::get('blogs/tag/{tag}', [PostController::class, 'tag'])->name('posts.tag');
-    Route::post('blogs/{post}/comments', [PostController::class, 'comments'])->name('post.comments');
+    Route::post('blogs/{post}/comments', [PostController::class, 'comments'])->name('blog.comments');
 
     // ------------------ workSample
     Route::get('work-samples/search', [WorkSampleController::class, 'search'])->name('workSample.search');
