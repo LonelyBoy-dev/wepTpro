@@ -37,6 +37,7 @@
     <!-- Blog Start -->
     <section class="section">
         <div class="container">
+            @if(count($posts))
             <div class="row">
                 <!-- BLog Start -->
                 <div class="col-lg-8 col-md-6">
@@ -148,6 +149,9 @@
                 </div><!--end col-->
                 <!-- END SIDEBAR -->
             </div><!--end row-->
+            @else
+            <h5>چیزی برای نمایش وجود ندارد!</h5>
+            @endif
         </div><!--end container-->
     </section><!--end section-->
     <!-- Blog End -->
