@@ -34,7 +34,6 @@ class PortalSite extends Controller
                     $content = $item->filter('.col-md-9.col-12.pr-lg-4.pl-lg-0.d-xl-0 .text-right')->html();
                     $image = session('Tamneel-image');
                     $slug = $this->make_slug($title);
-                    dd('title= '.$title.'   slug= '.$slug.'   image= '.$image.'   link= '.$content);
 
                     $image_stream = file_get_contents($image);
                     $realName = substr($image, strrpos($image, '/') + 1);
@@ -106,23 +105,23 @@ class PortalSite extends Controller
     public function save_images()
     {
         $client = new Client();
-        $crawler = $client->request('GET', 'https://learnsource.net/article/List?order=latest&categoryName=%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84');
-        $link = 'https://learnsource.net' . $crawler->filter('.block.mt-2.tracking-tight.text-base.font-medium.text-gray-700.transition.duration-100')->attr("href");
+        $crawler = $client->request('GET', 'https://www.kiantc.com/articles');
+        $link =  $client->filter('.card-title.font-weight-bold a')->attr("href");
 
         $client = new Client();
         $inside_post = $client->request('GET', $link);
 
-        $inside_post->filter('.myContent img')->each(function ($img) {
+        $inside_post->filter('.col-md-9.col-12.pr-lg-4.pl-lg-0.d-xl-0 .text-right img')->each(function ($img) {
 
             $client = new Client();
-            $crawler = $client->request('GET', 'https://learnsource.net/article/List?order=latest&categoryName=%D9%85%D9%88%D8%A8%D8%A7%DB%8C%D9%84');
-            $title = $crawler->filter('.flex.flex-col a')->text();
+            $crawler = $client->request('GET', 'https://www.kiantc.com/articles');
+            $title = $crawler->filter('.card-title.font-weight-bold a')->text();
 
             $slug = $this->make_slug($title);
             $post = Post::where('slug', $slug)->first();
 
-            $image = 'https://learnsource.net' . $img->attr("src");
-
+            $image = 'https://www.kiantc.com/' . $img->attr("src");
+            dd($image);
             $image_stream = file_get_contents($image);
             $realName = substr($image, strrpos($image, '/') + 1);
             $name=explode('?',$realName);
