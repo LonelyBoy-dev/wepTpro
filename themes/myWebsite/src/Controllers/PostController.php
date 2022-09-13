@@ -4,6 +4,7 @@ namespace Themes\myWebsite\src\Controllers;
 
 use App\Models\Category;
 use App\Http\Controllers\Controller;
+use App\Models\PostCategory;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\Taggabl;
@@ -31,9 +32,13 @@ class PostController extends Controller
         if ($category->type != 'postcat') {
             abort(404);
         }
+        $categories_id=PostCategory::where('category_id',$category->id)->get();
+        foreach ($categories_id as $category_id){
+            $cat_id[]=$category_id->post_id;
+        }
+        $cat_id=array_unique($cat_id);
 
-        $posts = Post::published()->whereIn('category_id', $category->allChildCategories())->latest()->paginate(9);
-
+        $posts = Post::published()->whereIn('id', $cat_id)->latest()->paginate(9);
         $latest_posts    = Post::latest()->take(5)->get();
         $categories=Category::where('type','postcat')->get();
         $tags=Tag::where('type','post')->get();
