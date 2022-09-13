@@ -117,9 +117,9 @@
                             @if(count($latest_posts))
                             <!-- پست های اخیر -->
                             <div class="widget mb-4 pb-2">
-                                <h5 class="widget-title">پست های اخیر</h5>
+                                <h5 class="widget-title">پربازدیترین ها</h5>
                                 <div class="mt-4">
-                                    @foreach($latest_posts as $item)
+                                    @foreach($most_view_posts as $item)
                                     <div class="clearfix post-recent">
                                         <div class="post-recent-thumb float-start"> <a href="{{ route('front.blogs.show', ['blog' => $item]) }}"> <img alt="img" src="{{asset($item->image)}}" class="img-fluid rounded"></a></div>
                                         <div class="post-recent-content float-start"><a href="{{ route('front.blogs.show', ['blog' => $item]) }}">{{ $item->title }} </a><span class="text-muted mt-2">{{ verta($item->created_at)->format('%d %B %Y') }}</span></div>

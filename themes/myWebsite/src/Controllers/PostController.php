@@ -20,10 +20,11 @@ class PostController extends Controller
         $posts->load(['comments' => function ($query) {
             $query->whereNull('comment_id')->where('status', 'accepted');
         }]);
+        $most_view_posts = Post::orderBy('view', 'desc')->take(5)->get();
         $latest_posts    = Post::latest()->take(5)->get();
         $categories=Category::where('type','postcat')->get();
         $tags=Tag::where('type','post')->get();
-        return view('front::posts.index', compact('posts','latest_posts','categories','tags'));
+        return view('front::posts.index', compact('posts','latest_posts','categories','tags','most_view_posts'));
     }
 
     public function category(Category $category)
