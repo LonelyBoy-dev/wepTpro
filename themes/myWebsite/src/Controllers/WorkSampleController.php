@@ -36,13 +36,13 @@ class WorkSampleController extends Controller
 
         //$items = WorkSample::published()->whereIn('category_id', $category->allChildCategories())->latest()->paginate(5);
 
-        $posts = WorkSample::whereHas('Categories', function ($q) use ($category) {
+        $items = WorkSample::whereHas('Categories', function ($q) use ($category) {
             $q->where('slug', $category->slug);
         })->paginate(6);
         $latest_posts    = WorkSample::latest()->take(5)->get();
         $categories=Category::where('type','postcat')->get();
         $tags=Tag::where('type','post')->get();
-        return view('front::workSample.category', compact('category','posts','latest_posts','categories','tags'));
+        return view('front::workSample.category', compact('category','items','latest_posts','categories','tags'));
     }
     public function search(Request $request)
     {
