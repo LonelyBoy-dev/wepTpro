@@ -31,12 +31,12 @@ class PostController extends Controller
         if ($category->type != 'postcat') {
             abort(404);
         }
-
+        dd($category);
         $posts = Post::published()->whereIn('category_id', $category->allChildCategories())->latest()->paginate(9);
         $latest_posts    = Post::latest()->take(5)->get();
         $categories=Category::where('type','postcat')->get();
         $tags=Tag::where('type','post')->get();
-        dd($posts);
+
         return view('front::posts.index', compact('posts','latest_posts','categories','tags'));
     }
     public function search(Request $request)
