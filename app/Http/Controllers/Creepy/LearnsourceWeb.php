@@ -118,7 +118,6 @@ class LearnsourceWeb extends Controller
             }else{
                 $name=$realName;
             }
-            dd('name='.$name.'<br>'.$image_stream);
             file_put_contents($name, $image_stream);
             if (!is_dir('uploads')) {
                 mkdir("uploads");
