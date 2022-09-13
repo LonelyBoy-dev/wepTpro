@@ -56,14 +56,11 @@ class PortalSite extends Controller
                     $category=PostCategory::where(['post_id'=>$post->id,'category_id'=>$category_id->id])->first();
 
                     if (!$category){
-                        PostCategory::create([
-                            'post_id'=>$post->id,
-                            'category_id'=>$category_id->id
-                        ]);
+                        $category=new PostCategory();
+                        $category->post_id=$post->id;
+                        $category->category_id=$category_id->id;
+                        $category->save();
                     }
-
-
-
 
                     Post::where('id',$post->id)->update(['image'=>'uploads/Posts/post-id-'.$post->id.'/'.$name]);
 

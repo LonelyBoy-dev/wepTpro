@@ -12,10 +12,6 @@ class PostCategory extends Model
     protected $table="category_post";
     use HasFactory;
 
-    protected $fillable=[
-      'post_id',
-      'category_id'
-    ];
 
     public function post()
     {
