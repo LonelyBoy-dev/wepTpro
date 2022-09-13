@@ -106,7 +106,7 @@ class PortalSite extends Controller
     {
         $client = new Client();
         $crawler = $client->request('GET', 'https://www.kiantc.com/articles');
-        $link =  $client->filter('.card-title.font-weight-bold a')->attr("href");
+        $link =  $crawler->filter('.card-title.font-weight-bold a')->attr("href");
 
         $client = new Client();
         $inside_post = $client->request('GET', $link);
