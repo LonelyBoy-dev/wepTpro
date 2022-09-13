@@ -126,7 +126,8 @@
                                         <div class="col-12">
                                             <div class="mb-3">
                                                 <label class="form-label">شماره موبایل </label>
-                                                <div class="form-icon position-relative"> <i data-feather="book" class="fea icon-sm icons"></i><i class="uil uil-phone d-block rounded h3 mb-0"></i>
+                                                <div class="form-icon position-relative">
+                                                    <i data-feather="phone" class="fea icon-sm icons"></i>
                                                     <input name="mobile" id="mobile" class="form-control ps-5" placeholder="شماره موبایل  :" value="{{old('mobile')}}">
                                                 </div>
                                             </div>
@@ -156,7 +157,7 @@
                                         <div class="mb-3">
                                             <label class="form-label">کد امنیتی  <span class="text-danger">*</span></label>
                                             <div class="form-icon position-relative">
-                                                <i data-feather="book" class="fea icon-sm icons"></i>
+                                                <i data-feather="key" class="fea icon-sm icons"></i>
                                                 <input id="captcha" class="form-control ps-5 captcha" style="padding-left: 115px !important;text-align: left" autocomplete="off" name="captcha" placeholder="کد  :">
                                                 <img class="captcha-image" src="{{ captcha_src('flat') }}" alt="captcha">
                                             </div>
