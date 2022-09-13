@@ -109,7 +109,7 @@ class LearnsourceWeb extends Controller
             $post = Post::where('slug', $slug)->first();
 
             $image = 'https://learnsource.net' . $img->attr("src");
-            dd($image);
+
             $image_stream = file_get_contents($image);
             $realName = substr($image, strrpos($image, '/') + 1);
             $name=explode('?',$realName);
@@ -118,6 +118,7 @@ class LearnsourceWeb extends Controller
             }else{
                 $name=$realName;
             }
+            dd('name='.$name.'<br>'.$image_stream);
             file_put_contents($name, $image_stream);
             if (!is_dir('uploads')) {
                 mkdir("uploads");
