@@ -127,8 +127,8 @@
                                             <div class="mb-3">
                                                 <label class="form-label">شماره موبایل </label>
                                                 <div class="form-icon position-relative">
-                                                    <i data-feather="book" class="fea icon-sm icons"></i>
-                                                    <input name="mobile" id="subject" class="form-control ps-5" placeholder="شماره موبایل  :" value="{{old('mobile')}}">
+                                                    <i class="fa-regular fa-mobile"></i>
+                                                    <input name="mobile" id="mobile" class="form-control ps-5" placeholder="شماره موبایل  :" value="{{old('mobile')}}">
                                                 </div>
                                             </div>
                                         </div><!--end col-->
