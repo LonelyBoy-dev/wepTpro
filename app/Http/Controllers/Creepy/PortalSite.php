@@ -68,8 +68,7 @@ class PortalSite extends Controller
                     }
                     rename($name, "uploads/Posts/post-id-" . $post->id . '/' . $name);
 
-                    return redirect()->route('front.blogs.show', ['blog' => $post]);
-                    dd($post);
+                    return redirect()->route('front.blogs.show', ['blog' => $post->slug]);
                 });
             }
         });
