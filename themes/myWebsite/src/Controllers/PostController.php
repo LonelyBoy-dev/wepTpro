@@ -67,6 +67,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
+        dd('gg');
         if (!$post->isShowable()) {
             abort(404);
         }
