@@ -45,14 +45,14 @@ class PortalSite extends Controller
 
                     $post = new Post();
                     $post->title = $title;
-                    $post->slug = "$slug";
+                    $post->slug = $slug;
                     $post->admin_id = '1';
                     $post->published = '1';
                     $post->image = $image;
                     $post->content = $content;
                     $post->save();
 
-                    $category_id=Category::where('slug','همه-مقالات')->first();
+                    $category_id=Category::where('slug',"همه-مقالات")->first();
                     dd($category_id);
                     $category=PostCategory::where(['post_id'=>$post->id,'category_id'=>$category_id->id])->first();
 
