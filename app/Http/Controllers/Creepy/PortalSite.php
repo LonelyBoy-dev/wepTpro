@@ -20,6 +20,7 @@ class PortalSite extends Controller
         $crawler->filter('.elementor-widget-container .elementor-post.elementor-grid-item')->each(function ($node) {
             $title = $node->filter('.elementor-post__title a')->text();
             $slug = $this->make_slug($title);
+            sleep(1);
             $image=$node->filter('.elementor-post.elementor-grid-item .elementor-post__thumbnail')->attr("src");
             $post = Post::where('slug', $slug)->first();
             $link =  $node->filter('.elementor-post__thumbnail__link')->attr("href");
