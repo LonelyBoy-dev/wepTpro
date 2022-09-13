@@ -68,11 +68,13 @@ class PortalSite extends Controller
                         mkdir("uploads/Posts/post-id-" . $post->id);
                     }
                     rename($name, "uploads/Posts/post-id-" . $post->id . '/' . $name);
-                    return redirect()->to('/');
+
                 });
 
             }
         });
+
+        return redirect()->to('/');
     }
     function make_slug($string, $separator = '-') {
         $_transliteration = ["/ö|œ/" => "e",
