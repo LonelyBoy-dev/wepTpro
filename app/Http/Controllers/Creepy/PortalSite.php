@@ -16,13 +16,13 @@ class PortalSite extends Controller
     public function index()
     {
         $client = new Client();
-        $crawler = $client->request('GET', 'https://iracode.com/articles/web-design');
-        $crawler->filter('.elementor-widget-container .elementor-post.elementor-grid-item')->each(function ($node) {
-            $title = $node->filter('.elementor-post__title a')->text();
+        $crawler = $client->request('GET', 'https://www.kiantc.com/articles');
+        $crawler->filter('.align-items-stretch .earticle-col-item')->each(function ($node) {
+            $title = $node->filter('.card-title.font-weight-bold a')->text();
             $slug = $this->make_slug($title);
-            $image=$node->filter('.elementor-post__thumbnail__link noscript img')->attr("src");
+            $image=$node->filter('.align-items-stretch .earticle-col-item .img-fluid')->attr("src");
             $post = Post::where('slug', $slug)->first();
-            $link =  $node->filter('.elementor-post__thumbnail__link')->attr("href");
+            $link =  $node->filter('.card-title.font-weight-bold a')->attr("href");
             dd('title= '.$title.'   slug= '.$slug.'   image= '.$image.'   link= '.$link);
             session()->put('Tamneel-image',$image);
             if (empty($post)) {
