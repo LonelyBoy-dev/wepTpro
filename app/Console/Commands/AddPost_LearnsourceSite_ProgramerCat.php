@@ -9,14 +9,14 @@ use Goutte\Client;
 use Illuminate\Console\Command;
 use Illuminate\Http\Request;
 
-class AddPost_LearnsourceSite extends Command
+class AddPost_LearnsourceSite_ProgramerCat extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'post:create_Learnsource';
+    protected $signature = 'post:LearnsourceSite_ProgramerCat';
 
     /**
      * The console command description.
@@ -27,29 +27,19 @@ class AddPost_LearnsourceSite extends Command
 
 
     /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return int
      */
     public function handle()
     {
-       $this->index();
+        $this->index();
     }
 
     public function index()
     {
         $client = new Client();
-        $crawler = $client->request('GET', 'https://learnsource.net/article/List?order=latest&categoryName=%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C+%D9%88%D8%A8');
+        $crawler = $client->request('GET', 'https://learnsource.net/article/List?order=latest&categoryName=%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87+%D9%86%D9%88%DB%8C%D8%B3%DB%8C');
         $crawler->filter('.container.m-auto.px-4.mt-8 .grid.grid-cols-12.gap-6')->each(function ($node) {
             $title = $node->filter('.flex.flex-col a')->text();
             $slug = $this->make_slug($title);
@@ -96,7 +86,7 @@ class AddPost_LearnsourceSite extends Command
                         $category->save();
                     }
 
-                    $category_id=Category::where('slug',"طراحی-وب")->first();
+                    $category_id=Category::where('slug',"برنامه-نویسی")->first();
                     $category=PostCategory::where(['post_id'=>$post->id,'category_id'=>$category_id->id])->first();
 
                     if (!$category){
@@ -138,7 +128,7 @@ class AddPost_LearnsourceSite extends Command
     public function save_images()
     {
         $client = new Client();
-        $crawler = $client->request('GET', 'https://learnsource.net/article/List?order=latest&categoryName=%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C+%D9%88%D8%A8');
+        $crawler = $client->request('GET', 'https://learnsource.net/article/List?order=latest&categoryName=%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87+%D9%86%D9%88%DB%8C%D8%B3%DB%8C');
         $link = 'https://learnsource.net' . $crawler->filter('.block.mt-2.tracking-tight.text-base.font-medium.text-gray-700.transition.duration-100')->attr("href");
 
         $client = new Client();
@@ -147,7 +137,7 @@ class AddPost_LearnsourceSite extends Command
         $inside_post->filter('.myContent img')->each(function ($img) {
 
             $client = new Client();
-            $crawler = $client->request('GET', 'https://learnsource.net/article/List?order=latest&categoryName=%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C+%D9%88%D8%A8');
+            $crawler = $client->request('GET', 'https://learnsource.net/article/List?order=latest&categoryName=%D8%A8%D8%B1%D9%86%D8%A7%D9%85%D9%87+%D9%86%D9%88%DB%8C%D8%B3%DB%8C');
             $title = $crawler->filter('.flex.flex-col a')->text();
 
             $slug = $this->make_slug($title);
