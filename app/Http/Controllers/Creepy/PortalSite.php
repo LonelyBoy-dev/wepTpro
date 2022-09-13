@@ -72,10 +72,10 @@ class PortalSite extends Controller
                 });
 
             }
-            return redirect()->to('/');
+
         });
-
-
+        $post = Post::latest()->first();
+        return redirect()->route('front.blogs.show', ['blog' => $post]);
     }
     function make_slug($string, $separator = '-') {
         $_transliteration = ["/ö|œ/" => "e",
