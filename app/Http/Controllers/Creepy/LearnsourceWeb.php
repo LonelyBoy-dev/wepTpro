@@ -41,7 +41,7 @@ class LearnsourceWeb extends Controller
                     }else{
                         $name=$realName;
                     }
-                    dd($name);
+
                     $post = new Post();
                     $post->title = $title;
                     $post->slug = $slug;
@@ -93,22 +93,22 @@ class LearnsourceWeb extends Controller
     public function save_images()
     {
         $client = new Client();
-        $crawler = $client->request('GET', 'https://www.portal.ir/blog');
-        $link = 'https://www.portal.ir/' . $crawler->filter('.card-title a')->attr("href");
+        $crawler = $client->request('GET', 'https://learnsource.net/article/List?order=latest&categoryName=%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C+%D9%88%D8%A8');
+        $link = 'https://learnsource.net' . $crawler->filter('.block.mt-2.tracking-tight.text-base.font-medium.text-gray-700.transition.duration-100')->attr("href");
 
         $client = new Client();
         $inside_post = $client->request('GET', $link);
 
-        $inside_post->filter('.justify-content-center .col-12.col-lg img')->each(function ($img) {
+        $inside_post->filter('.myContent img')->each(function ($img) {
 
             $client = new Client();
-            $crawler = $client->request('GET', 'https://www.portal.ir/blog');
-            $title = $crawler->filter('.card-title.h3.mb-2 a')->text();
+            $crawler = $client->request('GET', 'https://learnsource.net/article/List?order=latest&categoryName=%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C+%D9%88%D8%A8');
+            $title = $crawler->filter('.flex.flex-col a')->text();
 
             $slug = $this->make_slug($title);
             $post = Post::where('slug', $slug)->first();
 
-            $image = 'https://www.portal.ir/' . $img->attr("src");
+            $image = 'https://learnsource.net' . $img->attr("src");
 
             $image_stream = file_get_contents($image);
             $realName = substr($image, strrpos($image, '/') + 1);
