@@ -48,7 +48,7 @@
             </div><!--end col-->
             @endforeach
             <div class="col-12 mt-4 pt-2">
-                <a href="page-blog-grid.html" class="btn btn-primary">نمایش بیشتر <i class="uil uil-angle-left-b"></i></a>
+                <a href="/blogs" class="btn btn-primary">نمایش بیشتر <i class="uil uil-angle-left-b"></i></a>
             </div><!--end col-->
         </div><!--end row-->
     </div>
