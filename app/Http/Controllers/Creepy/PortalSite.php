@@ -17,7 +17,7 @@ class PortalSite extends Controller
     {
         $client = new Client();
         $crawler = $client->request('GET', 'https://www.kiantc.com/articles');
-        $crawler->filter('.justify-content-center .align-items-stretch')->each(function ($node) {
+        $crawler->filter('.justify-content-center .article-col-item')->each(function ($node) {
             $title = $node->filter('.card-title.font-weight-bold a')->text();
             $slug = $this->make_slug($title);
             $image='https://www.kiantc.com/'.$node->filter('.article-col-item .img-fluid')->attr("src");
