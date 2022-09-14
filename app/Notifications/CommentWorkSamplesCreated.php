@@ -29,7 +29,6 @@ class CommentWorkSamplesCreated extends Notification implements ShouldQueue
 
     /**
      * Get the notification's delivery channels.
-     *
      * @param  mixed  $notifiable
      * @return array
      */
