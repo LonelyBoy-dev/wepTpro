@@ -1,6 +1,7 @@
 #topnav .navigation-menu {
     justify-content: right;
     padding-right: 10%;
+    direction: rtl;
 }
 
 .social-icon.foot-social-icon li a {
