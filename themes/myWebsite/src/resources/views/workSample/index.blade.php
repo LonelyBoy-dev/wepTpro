@@ -41,7 +41,7 @@
                 <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2 picture-item">
                     <div class="card work-container work-modern position-relative overflow-hidden shadow rounded border-0">
                         <div class="card-body p-0 text-center">
-                            <img src="{{asset($item->image)}}" class="img-fluid rounded" style="max-height: 292px" alt=">{{$item->title}}">
+                            <img src="{{asset($item->image)}}" class="img-fluid rounded" style="height: 292px" alt=">{{$item->title}}">
                             <div class="overlay-work bg-dark"></div>
                             <div class="content">
                                 <h6 class="text-light tag mb-0 text-right"><a href="{{ route('front.work-samples.show', ['work_sample' => $item]) }}" class="text-white title">{{$item->title}}</a></h6>
