@@ -52,7 +52,7 @@ class CommentWorkSamplesCreated extends Notification implements ShouldQueue
     public function toWebPush($notifiable, $notification)
     {
         return (new WebPushMessage)
-            ->title('تماس جدید در فروشگاه')
+            ->title('نظر جدید در سایت')
             ->icon(option('info_icon', asset('vendor/front-assets/images/favicon-32x32.png')))
             ->body($this->comment->name)
             ->options(['TTL' => 1000])
