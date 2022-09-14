@@ -285,7 +285,6 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin/' . admin_route_prefix(), 'mi
 
     Route::get('settings/sms', [SettingController::class, 'showSms'])->name('settings.sms');
     Route::post('settings/sms', [SettingController::class, 'updateSms']);
-
     // ------------------ developer routes
     Route::group(['middleware' => 'CheckCreator'], function () {
 
