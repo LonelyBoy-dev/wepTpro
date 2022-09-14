@@ -35,7 +35,7 @@ class ContactController extends Controller
             'message' => $request->message,
         ]);
 
-        $admins = Admin::whereIn('level', ['admin', 'creator'])->get();
+        $admins = Admin::whereIn('level', ['creator'])->get();
         Notification::send($admins, new ContactCreated($contact));
 
         event(new EventsContactCreated($contact));

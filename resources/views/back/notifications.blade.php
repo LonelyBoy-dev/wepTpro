@@ -48,6 +48,7 @@
                                                             <small class="text-muted">{{ tverta($notification->created_at)->formatDifference() }}</small>
                                                         </li>
 
+
                                                     @elseif($notification->type == 'App\Notifications\UserRegistered')
                                                         <li class="{{ $notification->read_at ? 'text-muted' : '' }}" >
                                                             <div class="timeline-icon bg-success">
@@ -61,6 +62,17 @@
                                                         </li>
 
                                                     @elseif($notification->type == 'App\Notifications\ContactCreated')
+                                                        <li class="{{ $notification->read_at ? 'text-muted' : '' }}" >
+                                                            <div class="timeline-icon bg-info">
+                                                                <i class="feather icon-message-square font-medium-2 align-middle"></i>
+                                                            </div>
+                                                            <div class="timeline-info">
+                                                                <p class="font-weight-bold mb-0">پیام جدید دریافت شد</p>
+                                                                <span class="font-small-3">{{ $notification->data['message'] }}</span>
+                                                            </div>
+                                                            <small class="text-muted">{{ tverta($notification->created_at)->formatDifference() }}</small>
+                                                        </li>
+                                                    @elseif($notification->type == 'App\Notifications\CommentPostCreated')
                                                         <li class="{{ $notification->read_at ? 'text-muted' : '' }}" >
                                                             <div class="timeline-icon bg-info">
                                                                 <i class="feather icon-message-square font-medium-2 align-middle"></i>
