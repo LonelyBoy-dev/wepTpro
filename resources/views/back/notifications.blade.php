@@ -32,7 +32,6 @@
 
                                 <div class="card-content">
                                     <div class="card-body">
-                                        @dd($notifications)
                                         @if($notifications->count())
                                             <ul class="activity-timeline timeline-left list-unstyled">
                                                 @foreach ($notifications as $notification)
