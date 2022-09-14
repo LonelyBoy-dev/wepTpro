@@ -45,6 +45,17 @@
                                 <time class="media-meta">{{ tverta($notification->created_at)->formatDifference() }}</time></small>
                         </div>
                     </a>
+                @elseif($notification->type == 'App\Notifications\CommentPostCreated')
+                    <a class="d-flex justify-content-between" href="{{ route('admin.notifications') }}">
+                        <div class="media d-flex align-items-start">
+                            <div class="media-left"><i class="feather icon-message-square font-medium-5 info"></i></div>
+                            <div class="media-body">
+                                <h6 class="info media-heading">پیام جدید دریافت شد</h6><small
+                                    class="notification-text">{{ $notification->data['message'] }}</small>
+                            </div><small>
+                                <time class="media-meta">{{ tverta($notification->created_at)->formatDifference() }}</time></small>
+                        </div>
+                    </a>
                 @endif
             @endforeach
         </li>
