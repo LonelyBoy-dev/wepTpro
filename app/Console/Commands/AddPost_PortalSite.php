@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Category;
 use App\Models\Post;
+use App\Models\PostCategory;
 use Goutte\Client;
 use Illuminate\Console\Command;
 use Illuminate\Http\Request;
@@ -73,7 +75,15 @@ class AddPost_PortalSite extends Command
                     $post->content = $content;
                     $post->save();
 
+                    $category_id=Category::where('slug',"همه-مقالات")->first();
+                    $category=PostCategory::where(['post_id'=>$post->id,'category_id'=>$category_id->id])->first();
 
+                    if (!$category){
+                        $category=new PostCategory();
+                        $category->post_id=$post->id;
+                        $category->category_id=$category_id->id;
+                        $category->save();
+                    }
 
                     Post::where('id',$post->id)->update(['image'=>'uploads/Posts/post-id-'.$post->id.'/'.$name]);
 
