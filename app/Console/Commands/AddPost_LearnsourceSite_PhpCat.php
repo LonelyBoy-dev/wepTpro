@@ -102,16 +102,11 @@ class AddPost_LearnsourceSite_PhpCat extends Command
 
 
                     file_put_contents($name, $image_stream);
-                    if (!is_dir('uploads')) {
-                        mkdir("uploads");
+
+                    if (!is_dir(public_path('uploads/Posts/post-id-' . $post->id))) {
+                        mkdir(public_path('uploads/Posts/post-id-'. $post->id) );
                     }
-                    if (!is_dir('uploads/Posts')) {
-                        mkdir("uploads/Posts");
-                    }
-                    if (!is_dir('uploads/Posts/post-id-' . $post->id)) {
-                        mkdir("uploads/Posts/post-id-" . $post->id);
-                    }
-                    rename($name, "uploads/Posts/post-id-" . $post->id . '/' . $name);
+                    rename($name, public_path('uploads/Posts/post-id-'. $post->id . '/' . $name) );
                     session()->forget('Tamneel-image');
                 });
 
@@ -154,16 +149,10 @@ class AddPost_LearnsourceSite_PhpCat extends Command
                 $name=$realName;
             }
             file_put_contents($name, $image_stream);
-            if (!is_dir('uploads')) {
-                mkdir("uploads");
+            if (!is_dir(public_path('uploads/Posts/post-id-'. $post->id) )) {
+                mkdir(public_path('uploads/Posts/post-id-'. $post->id)) ;
             }
-            if (!is_dir('uploads/Posts')) {
-                mkdir("uploads/Posts");
-            }
-            if (!is_dir('uploads/Posts/post-id-' . $post->id)) {
-                mkdir("uploads/Posts/post-id-" . $post->id);
-            }
-            rename($name, "uploads/Posts/post-id-" . $post->id . '/' . $name);
+            rename($name, public_path('uploads/Posts/post-id-'. $post->id . '/' . $name) );
 
         });
 
