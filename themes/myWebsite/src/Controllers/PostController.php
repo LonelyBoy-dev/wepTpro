@@ -128,7 +128,6 @@ class PostController extends Controller
                 'status' => 'accepted'
             ]);
         }
-
         // Notification
         $role=Role::where('slug','نویسنده')->first();
         $admin_roles=AdminRole::where('role_id',$role->id)->get();
