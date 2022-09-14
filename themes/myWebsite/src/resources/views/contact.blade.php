@@ -197,7 +197,7 @@
 
 @push('scripts')
        <script src="{{ theme_asset('js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
-        <script src="{{ theme_asset('js/plugins/jquery-validation/localization/messages_fa.min.js') }}"></scrip>
+        <script src="{{ theme_asset('js/plugins/jquery-validation/localization/messages_fa.min.js') }}"></script>
     {{--
         <script type="text/javascript" src="{{ theme_asset('mapp/js/mapp.env.js') }}"></script>
         <script type="text/javascript" src="{{ theme_asset('mapp/js/mapp.min.js?v=1') }}"></script>
