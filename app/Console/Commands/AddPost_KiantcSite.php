@@ -90,7 +90,7 @@ class AddPost_KiantcSite extends Command
                     $category->save();
                 }
 
-                Post::where('id',$post->id)->update(['image'=>public_path('uploads/Posts/post-id-'.$post->id.'/'.$name)]);
+                Post::where('id',$post->id)->update(['image'=>'uploads/Posts/post-id-'.$post->id.'/'.$name]);
 
                 $this->save_images();
 
