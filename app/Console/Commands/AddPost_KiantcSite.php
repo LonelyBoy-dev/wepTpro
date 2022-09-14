@@ -90,22 +90,17 @@ class AddPost_KiantcSite extends Command
                     $category->save();
                 }
 
-                Post::where('id',$post->id)->update(['image'=>'/uploads/Posts/post-id-'.$post->id.'/'.$name]);
+                Post::where('id',$post->id)->update(['image'=>public_path('uploads/Posts/post-id-'.$post->id.'/'.$name)]);
 
                 $this->save_images();
 
 
                 file_put_contents($name, $image_stream);
-                if (!is_dir(public_path('uploads'))) {
-                    mkdir(public_path('uploads'));
+
+                if (!is_dir(public_path('uploads/Posts/post-id-' . $post->id))) {
+                    mkdir(public_path('uploads/Posts/post-id-'. $post->id) );
                 }
-                if (!is_dir(public_path('uploads/Posts'))) {
-                    mkdir(public_path('uploads/Posts'));
-                }
-                if (!is_dir(public_path('uploads/Posts/post-id-') . $post->id)) {
-                    mkdir(public_path('uploads/Posts/post-id-') . $post->id);
-                }
-                rename($name, public_path('uploads/Posts/post-id-') . $post->id . '/' . $name);
+                rename($name, public_path('uploads/Posts/post-id-'. $post->id . '/' . $name) );
                 session()->forget('Tamneel-image');
             });
 
@@ -147,16 +142,11 @@ class AddPost_KiantcSite extends Command
                 $name=$realName;
             }
             file_put_contents($name, $image_stream);
-            if (!is_dir(public_path('uploads'))) {
-                mkdir(public_path('uploads'));
+
+            if (!is_dir(public_path('uploads/Posts/post-id-'. $post->id) )) {
+                mkdir(public_path('uploads/Posts/post-id-'. $post->id)) ;
             }
-            if (!is_dir(public_path('uploads/Posts'))) {
-                mkdir(public_path('uploads/Posts'));
-            }
-            if (!is_dir(public_path('uploads/Posts/post-id-') . $post->id)) {
-                mkdir(public_path('uploads/Posts/post-id-') . $post->id);
-            }
-            rename($name, public_path('uploads/Posts/post-id-') . $post->id . '/' . $name);
+            rename($name, public_path('uploads/Posts/post-id-'. $post->id . '/' . $name) );
 
         });
 
