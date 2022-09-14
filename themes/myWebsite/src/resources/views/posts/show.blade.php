@@ -299,13 +299,13 @@
     <script src="{{ theme_asset('js/pages/comments.js') }}"></script>
     <script>
 
-        @if($item->edit=="NO")
+        @if($blog->edit=="NO")
         $(document).ready(function () {
             $('#content img').each(function(){
                 var item=this;
                 var tarr = $(item).attr('src').split('/');      // ["static","images","banner","blue.jpg"]
                 var imageName = tarr[tarr.length-1]; // "blue.jpg"
-                $(item).attr('src','{{asset('')}}uploads/Posts/post-id-{{$item->id}}/'+imageName);
+                $(item).attr('src','{{asset('')}}uploads/Posts/post-id-{{$blog->id}}/'+imageName);
             });
 
             $('p a .img-responsive.img-fluid').remove();
@@ -319,7 +319,7 @@
             console.log(content)
             var CSRF_TOKEN = '{{ csrf_token() }}';
             var url = '{{route('Creepy.portal.editPost')}}';
-            var data = {_token: CSRF_TOKEN, id: {{$item->id}},content:content};
+            var data = {_token: CSRF_TOKEN, id: {{$blog->id}},content:content};
             $.post(url, data, function (msg) {
 
             });
