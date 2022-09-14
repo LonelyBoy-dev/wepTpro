@@ -8,7 +8,7 @@
             </div>
         </li>
         <li class="scrollable-container media-list">
-            @dd($notifications);
+
             @foreach ($notifications as $notification)
                 @if($notification->type == 'App\Notifications\OrderPaid')
 
