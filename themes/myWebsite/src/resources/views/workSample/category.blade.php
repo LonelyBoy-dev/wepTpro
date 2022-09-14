@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="client">
                                     @if($item->applicant)<small class="text-light user d-block"><i class="uil uil-user"></i>{{$item->applicant}}</small>@endif
-                                    <small class="text-light date"><i class="muil uil-calendar-alt"></i>
+                                    <small class="text-light text-right date"><i class="muil uil-calendar-alt"></i>
                                         @if($item->publish_date)
                                             {{Verta::instance($item->publish_date)->format(' %d %B %Y')}}
                                         @else
