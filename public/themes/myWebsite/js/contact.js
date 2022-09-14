@@ -2,6 +2,7 @@
 function validateForm() {
   var name = document.forms["myForm"]["name"].value;
   var email = document.forms["myForm"]["email"].value;
+  var mobile = document.forms["myForm"]["mobile"].value;
   var subject = document.forms["myForm"]["subject"].value;
   var message = document.forms["myForm"]["message"].value;
   var captcha = document.forms["myForm"]["captcha"].value;
@@ -12,13 +13,13 @@ function validateForm() {
     fadeIn();
     return false;
   }
+
   if (email == "" || email == null) {
     document.getElementById('error-msg').innerHTML = "<div class='alert alert-warning error_message'>*لطفا ایمیل خود را وارد کنید*</div>";
     fadeIn();
     return false;
   }
   if (subject == "" || subject == null) {
-    alert(subject)
     document.getElementById('error-msg').innerHTML = "<div class='alert alert-warning error_message'>*لطفا موضوع خود را وارد کنید*</div>";
     fadeIn();
     return false;

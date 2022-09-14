@@ -113,7 +113,17 @@
                                             </div>
                                         </div>
 
+
                                         <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">شماره موبایل </label>
+                                                <div class="form-icon position-relative">
+                                                    <i data-feather="phone" class="fea icon-sm icons"></i>
+                                                    <input name="mobile" id="mobile" class="form-control ps-5" placeholder="شماره موبایل  :" value="{{old('mobile')}}">
+                                                </div>
+                                            </div>
+                                        </div><!--end col-->
+                                        <div class="col-12">
                                             <div class="mb-3">
                                                 <label class="form-label">ایمیل شما <span class="text-danger">*</span></label>
                                                 <div class="form-icon position-relative">
@@ -125,17 +135,7 @@
 
                                         <div class="col-12">
                                             <div class="mb-3">
-                                                <label class="form-label">شماره موبایل </label>
-                                                <div class="form-icon position-relative">
-                                                    <i data-feather="phone" class="fea icon-sm icons"></i>
-                                                    <input name="mobile" id="mobile" class="form-control ps-5" placeholder="شماره موبایل  :" value="{{old('mobile')}}">
-                                                </div>
-                                            </div>
-                                        </div><!--end col-->
-
-                                        <div class="col-12">
-                                            <div class="mb-3">
-                                                <label class="form-label">موضوع </label>
+                                                <label class="form-label">موضوع <span class="text-danger">*</span></label>
                                                 <div class="form-icon position-relative">
                                                     <i data-feather="book" class="fea icon-sm icons"></i>
                                                     <input name="subject" id="subject" class="form-control ps-5" placeholder="موضوع  :" value="{{old('subject')}}">
@@ -213,6 +213,6 @@
 
         var mapIrApiKey = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjYwMTBjYWE1OWU4ZDAyYzM0YWI2MGFhZDE5MTBhNjM5ZTZkYTI0MzA1ZmMwNzQzY2NmMjRkZmQ2Y2FlMzFjOThmODg4MjExYWY4ZDkwMGE1In0.eyJhdWQiOiIxMjcxOSIsImp0aSI6IjYwMTBjYWE1OWU4ZDAyYzM0YWI2MGFhZDE5MTBhNjM5ZTZkYTI0MzA1ZmMwNzQzY2NmMjRkZmQ2Y2FlMzFjOThmODg4MjExYWY4ZDkwMGE1IiwiaWF0IjoxNjEyODY3Mjc2LCJuYmYiOjE2MTI4NjcyNzYsImV4cCI6MTYxNTM3Mjg3Niwic3ViIjoiIiwic2NvcGVzIjpbImJhc2ljIl19.QNujb2BIyM8mIMy2AhivkMTpVCRyanpUIifJguxoEe4hXB1MESD2CWnO0WPq854Bi6yQyfD2w-oqjOi5N1aZmX4prggmrYelHy_mC1JEwAhWien_6QviFAvkhGDC-aPW4zjFKG2REUkQzXaeL2em543P6-hWdjFaUVSibm1XL4_CUnjJiafQsMQ67ZJ5E7Cpk92L89nJ0LMaBocex56tRqz7_7wZQUAtDYjfal90h2XaGh3QZ2rMwl69ZfMTrOEeTM9O6YCynT3IoTpDnNSXExJeMDuGv4zCD37UYG1gpVtNfipwgvc2J_LzLMXS4rnVAV2ednLKEYu7-jUXr68psg';
     </script>
-
-    <script src="{{ theme_asset('js/pages/contact.js?v=1') }}"></script>--}}
+--}}
+    <script src="{{ theme_asset('js/pages/contact.js?v=1') }}"></script>
 @endpush
