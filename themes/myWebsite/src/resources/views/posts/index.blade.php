@@ -50,7 +50,7 @@
                                     <div class="overlay rounded-top bg-dark"></div>
                                 </div>
                                 <div class="card-body content">
-                                    <h5><a href="{{ route('front.blogs.show', ['blog' => $item]) }}" class="card-title title text-dark">{{$item->title}}</a></h5>
+                                    <h5 style="height: 60px"><a href="{{ route('front.blogs.show', ['blog' => $item]) }}" class="card-title title text-dark">{{$item->title}}</a></h5>
                                     <div class="post-meta d-flex justify-content-between mt-3">
                                         <ul class="list-unstyled mb-0">
                                           {{--  <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="uil uil-heart me-1"></i>33</a></li>--}}
