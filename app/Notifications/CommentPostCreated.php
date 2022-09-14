@@ -38,6 +38,7 @@ class CommentPostCreated extends Notification implements ShouldQueue
         return ['database', WebPushChannel::class];
     }
 
+
     /**
      * Get the array representation of the notification.
      * @param  mixed  $notifiable

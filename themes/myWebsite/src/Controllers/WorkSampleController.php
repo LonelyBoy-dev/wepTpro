@@ -11,6 +11,7 @@ use App\Models\Role;
 use App\Models\Tag;
 use App\Models\Taggabl;
 use App\Notifications\CommentPostCreated;
+use App\Notifications\CommentWorkSamplesCreated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Notification;
@@ -128,7 +129,7 @@ class WorkSampleController extends Controller
 
 
         // Notification
-        $role=Role::where('slug','نویسنده')->first();
+        $role=Role::where('slug','طراح-پوستر-و-لگو')->first();
         $admin_roles=AdminRole::where('role_id',$role->id)->get();
         $admins=[];
         foreach ($admin_roles as $admin_role){
@@ -138,7 +139,7 @@ class WorkSampleController extends Controller
         $admins=array_merge($admins,$creatorAdmin);
         $admins=array_unique($admins);
         $admins = Admin::whereIn('id', $admins)->get();
-        Notification::send($admins,new CommentPostCreated($comment));
+        Notification::send($admins,new CommentWorkSamplesCreated($comment));
         // Notification
 
         session()->put('success','نظر شما با موفقیت ثبت شد و بعد از تایید مدیر در سایت نمایش داه می شود.');
