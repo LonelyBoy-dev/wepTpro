@@ -56,8 +56,8 @@ class CommentPostCreated extends Notification implements ShouldQueue
         return (new WebPushMessage)
             ->title('تماس جدید در فروشگاه')
             ->icon(option('info_icon', asset('vendor/front-assets/images/favicon-32x32.png')))
-            ->body($this->comment->subject)
+            ->body($this->comment->title)
             ->options(['TTL' => 1000])
-            ->data(['link' => route('admin.contacts.index')]);
+            ->data(['link' => route('admin.comments.index')]);
     }
 }
