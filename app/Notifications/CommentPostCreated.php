@@ -45,11 +45,8 @@ class CommentPostCreated extends Notification implements ShouldQueue
      */
     public function toArray($notifiable)
     {
-        /*return [
-            'message' => 'شما یک نظر جدید از بخش مقالات،از کاربر "'. $this->comment->name . '" دارید.',
-        ];*/
         return [
-            'message' => 'شما یک نظر جدید از بخش.',
+            'message' => 'شما یک نظر جدید از بخش مقالات،از کاربر "'. $this->comment->name . '" دارید.',
         ];
     }
 
