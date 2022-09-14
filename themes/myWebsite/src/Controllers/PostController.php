@@ -16,6 +16,7 @@ use Codedge\Updater\Notifications\Notifiable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Notification;
 
 class PostController extends Controller
 {
@@ -137,7 +138,7 @@ class PostController extends Controller
         $admins=array_merge($admins,$creatorAdmin);
         $admins=array_unique($admins);
         $admins = Admin::whereIn('id', $admins)->get();
-        Notifiable::send($admins,new CommentPostCreated($comment));
+        Notification::send($admins,new CommentPostCreated($comment));
         session()->put('success','نظر شما با موفقیت ثبت شد و بعد از تایید مدیر در سایت نمایش داه می شود.');
         return redirect('/blogs/'.$blog->slug.'/#comment');
     }
