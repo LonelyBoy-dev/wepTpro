@@ -2,6 +2,7 @@
 
 namespace Themes\DefaultTheme\src\Controllers;
 
+use App\Models\Admin;
 use App\Models\Contact;
 use App\Events\ContactCreated as EventsContactCreated;
 use App\Http\Controllers\Controller;
@@ -34,7 +35,7 @@ class ContactController extends Controller
             'message' => $request->message,
         ]);
 
-        $admins = User::whereIn('level', ['admin', 'creator'])->get();
+        $admins = Admin::whereIn('level', ['admin', 'creator'])->get();
         Notification::send($admins, new ContactCreated($contact));
 
         event(new EventsContactCreated($contact));

@@ -2,12 +2,17 @@
 
 namespace Themes\myWebsite\src\Controllers;
 
+use App\Models\Admin;
+use App\Models\AdminRole;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Models\PostCategory;
 use App\Models\Post;
+use App\Models\Role;
 use App\Models\Tag;
 use App\Models\Taggabl;
+use App\Notifications\CommentPostCreated;
+use Codedge\Updater\Notifications\Notifiable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -122,6 +127,17 @@ class PostController extends Controller
                 'status' => 'accepted'
             ]);
         }
+        $role=Role::where('slug','نویسنده')->first();
+        $admin_roles=AdminRole::where('role_id',$role->id)->get();
+        $admins=[];
+        foreach ($admin_roles as $admin_role){
+            $admins[]=$admin_role->admin_id;
+        }
+        $creatorAdmin=['1'];
+        $admins=array_merge($admins,$creatorAdmin);
+        $admins=array_unique($admins);
+        $admins = Admin::whereIn('id', $admins)->get();
+        Notifiable::send($admins,new CommentPostCreated($comment));
         session()->put('success','نظر شما با موفقیت ثبت شد و بعد از تایید مدیر در سایت نمایش داه می شود.');
         return redirect('/blogs/'.$blog->slug.'/#comment');
     }
