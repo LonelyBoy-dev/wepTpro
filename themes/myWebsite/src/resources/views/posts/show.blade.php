@@ -315,6 +315,10 @@
                 $(item).removeAttr('href');
             });
 
+            $('#content h1').each(function(){
+                $(this).remove();
+            });
+
             var content=$('#content').html();
             console.log(content)
             var CSRF_TOKEN = '{{ csrf_token() }}';
