@@ -128,6 +128,8 @@ class PostController extends Controller
                 'status' => 'accepted'
             ]);
         }
+
+        // Notification
         $role=Role::where('slug','نویسنده')->first();
         $admin_roles=AdminRole::where('role_id',$role->id)->get();
         $admins=[];
@@ -139,6 +141,8 @@ class PostController extends Controller
         $admins=array_unique($admins);
         $admins = Admin::whereIn('id', $admins)->get();
         Notification::send($admins,new CommentPostCreated($comment));
+        // Notification
+
         session()->put('success','نظر شما با موفقیت ثبت شد و بعد از تایید مدیر در سایت نمایش داه می شود.');
         return redirect('/blogs/'.$blog->slug.'/#comment');
     }

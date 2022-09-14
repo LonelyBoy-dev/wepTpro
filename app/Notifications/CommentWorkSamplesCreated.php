@@ -11,7 +11,7 @@ use Illuminate\Notifications\Notification;
 use NotificationChannels\WebPush\WebPushMessage;
 use NotificationChannels\WebPush\WebPushChannel;
 
-class CommentPostCreated extends Notification implements ShouldQueue
+class CommentWorkSamplesCreated extends Notification implements ShouldQueue
 {
     use Queueable;
     public $comment;
@@ -46,7 +46,7 @@ class CommentPostCreated extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            'message' => 'شما یک نظر جدید از بخش مقالات،از کاربر "' . $this->comment->name . '" دارید.',
+            'message' => 'شما یک نظر جدید از بخش نمونه کارها،از کاربر "' . $this->comment->name . '" دارید.',
         ];
     }
 
