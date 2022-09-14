@@ -47,7 +47,7 @@ class CommentPostCreated extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            'message' => 'شما یک نظر جدید با موضوع "' . $this->comment->subject . '" دارید.',
+            'message' => 'شما یک نظر جدید با از کاربر "' . $this->comment->name . '" دارید.',
         ];
     }
 
@@ -56,7 +56,7 @@ class CommentPostCreated extends Notification implements ShouldQueue
         return (new WebPushMessage)
             ->title('تماس جدید در فروشگاه')
             ->icon(option('info_icon', asset('vendor/front-assets/images/favicon-32x32.png')))
-            ->body($this->comment->title)
+            ->body($this->comment->name)
             ->options(['TTL' => 1000])
             ->data(['link' => route('admin.comments.index')]);
     }
