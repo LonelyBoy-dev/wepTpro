@@ -79,7 +79,7 @@
                                                             </div>
                                                             <div class="timeline-info">
                                                                 <p class="font-weight-bold mb-0">پیام جدید دریافت شد</p>
-                                                                <span class="font-small-3"></span>
+                                                                <span class="font-small-3">{{ $notification->data['message'] }}</span>
                                                             </div>
                                                             <small class="text-muted">{{ tverta($notification->created_at)->formatDifference() }}</small>
                                                         </li>
