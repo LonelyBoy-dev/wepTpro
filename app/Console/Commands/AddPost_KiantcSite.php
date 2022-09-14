@@ -90,7 +90,7 @@ class AddPost_KiantcSite extends Command
                     $category->save();
                 }
 
-                Post::where('id',$post->id)->update(['image'=>'uploads/Posts/post-id-'.$post->id.'/'.$name]);
+                Post::where('id',$post->id)->update(['image'=>'/uploads/Posts/post-id-'.$post->id.'/'.$name]);
 
                 $this->save_images();
 
@@ -99,13 +99,13 @@ class AddPost_KiantcSite extends Command
                 if (!is_dir('uploads')) {
                     mkdir("uploads");
                 }
-                if (!is_dir('uploads/Posts')) {
-                    mkdir("uploads/Posts");
+                if (!is_dir('/uploads/Posts')) {
+                    mkdir("/uploads/Posts");
                 }
-                if (!is_dir('uploads/Posts/post-id-' . $post->id)) {
-                    mkdir("uploads/Posts/post-id-" . $post->id);
+                if (!is_dir('/uploads/Posts/post-id-' . $post->id)) {
+                    mkdir("/uploads/Posts/post-id-" . $post->id);
                 }
-                rename($name, "uploads/Posts/post-id-" . $post->id . '/' . $name);
+                rename($name, "/uploads/Posts/post-id-" . $post->id . '/' . $name);
                 session()->forget('Tamneel-image');
             });
 
@@ -150,13 +150,13 @@ class AddPost_KiantcSite extends Command
             if (!is_dir('uploads')) {
                 mkdir("uploads");
             }
-            if (!is_dir('uploads/Posts')) {
-                mkdir("uploads/Posts");
+            if (!is_dir('/uploads/Posts')) {
+                mkdir("/uploads/Posts");
             }
-            if (!is_dir('uploads/Posts/post-id-' . $post->id)) {
-                mkdir("uploads/Posts/post-id-" . $post->id);
+            if (!is_dir('/uploads/Posts/post-id-' . $post->id)) {
+                mkdir("/uploads/Posts/post-id-" . $post->id);
             }
-            rename($name, "uploads/Posts/post-id-" . $post->id . '/' . $name);
+            rename($name, "/uploads/Posts/post-id-" . $post->id . '/' . $name);
 
         });
 
