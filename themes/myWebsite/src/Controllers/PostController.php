@@ -39,13 +39,13 @@ class PostController extends Controller
             $cat_id[]=$category_id->post_id;
         }
         $cat_id=array_unique($cat_id);
-
+        $most_view_posts = Post::orderBy('view', 'desc')->take(5)->get();
         $posts = Post::published()->whereIn('id', $cat_id)->latest()->paginate(9);
         $latest_posts    = Post::latest()->take(5)->get();
         $categories=Category::where('type','postcat')->orderby('ordering','asc')->get();
         $tags=Tag::where('type','post')->get();
 
-        return view('front::posts.index', compact('posts','latest_posts','categories','tags'));
+        return view('front::posts.index', compact('posts','most_view_posts','latest_posts','categories','tags'));
     }
     public function search(Request $request)
     {
@@ -67,11 +67,11 @@ class PostController extends Controller
             $post_id[]=$item->taggable_id;
         }
         $posts = Post::published()->whereIn('id', $post_id)->latest()->paginate(10);
-
+        $most_view_posts = Post::orderBy('view', 'desc')->take(5)->get();
         $latest_posts    = Post::latest()->take(5)->get();
         $categories=Category::where('type','postcat')->orderby('ordering','asc')->get();
         $tags=Tag::where('type','post')->get();
-        return view('front::posts.index', compact('posts','latest_posts','categories','tags','tag'));
+        return view('front::posts.index', compact('posts','most_view_posts','latest_posts','categories','tags','tag'));
     }
 
     public function show(Post $blog)
