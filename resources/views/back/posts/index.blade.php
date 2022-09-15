@@ -39,6 +39,7 @@
                                             <tr>
                                                 <th class="text-center">تصویر شاخص</th>
                                                 <th>عنوان</th>
+                                                <th>بازدید</th>
                                                 <th class="text-center">وضعیت</th>
                                                 <th class="text-center">عملیات</th>
                                             </tr>
@@ -57,6 +58,7 @@
                                                             <div class="badge badge-pill badge-danger badge-md">پیش نویس</div>
                                                         @endif
                                                     </td>
+                                                    <td>{{$post->veiw}}</td>
                                                     <td class="text-center">
 
                                                         @can('posts.update')
