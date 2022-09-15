@@ -218,6 +218,10 @@
 <script src="{{theme_asset('js/plugins.init.js')}}"></script><!--Note: All init js like tiny slider, counter, countdown, maintenance, lightbox, gallery, swiper slider, aos animation etc.-->
 <script src="{{theme_asset('js/app.js')}}"></script><!--Note: All important javascript like page loader, menu, sticky menu, menu-toggler, one page menu etc. -->
 @stack('scripts')
+
+@toastr_render
+
+{!! option('info_scripts') !!}
 </body>
 
 </html>
