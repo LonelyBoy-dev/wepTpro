@@ -37,6 +37,7 @@
                                     <table class="table table-striped mb-0">
                                         <thead>
                                             <tr>
+                                                <th>#</th>
                                                 <th class="text-center">تصویر شاخص</th>
                                                 <th>عنوان</th>
                                                 <th class="text-center">بازدید</th>
@@ -47,6 +48,7 @@
                                         <tbody>
                                             @foreach ($posts as $post)
                                                 <tr id="post-{{ $post->id }}-tr">
+                                                    <td>{{$loop->iteration}}</td>
                                                     <td class="text-center">
                                                         <img class="post-thumb" src="{{ $post->image ? asset($post->image) : asset('/empty.jpg') }}" alt="image">
                                                     </td>
