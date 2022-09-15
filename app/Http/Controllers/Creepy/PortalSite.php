@@ -17,13 +17,13 @@ class PortalSite extends Controller
     {
         $client = new Client();
         $crawler = $client->request('GET', 'https://www.kiantc.com/articles');
-            $title = $crawler->filter('.card-title.font-weight-bold a')->text();
-            $slug = $this->make_slug($title);
-            $image='https://www.kiantc.com/'.$crawler->filter('.article-col-item .img-fluid')->attr("src");
-            $post = Post::where('slug', $slug)->first();
-            $link =  $crawler->filter('.card-title.font-weight-bold a')->attr("href");
-            session()->put('Tamneel-image',$image);
-            if (!empty($post)) {
+        $title = $crawler->filter('.card-title.font-weight-bold a')->text();
+        $slug = $this->make_slug($title);
+        $image='https://www.kiantc.com/'.$crawler->filter('.article-col-item .img-fluid')->attr("src");
+        $post = Post::where('slug', $slug)->first();
+        $link =  $crawler->filter('.card-title.font-weight-bold a')->attr("href");
+        session()->put('Tamneel-image',$image);
+        if (!empty($post)) {
 
                 $client = new Client();
                 $inside_post = $client->request('GET', $link);
