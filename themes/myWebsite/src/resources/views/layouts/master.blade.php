@@ -44,6 +44,7 @@
     @endif
     <link href="{{theme_asset('css/style.css')}}" rel="stylesheet" id="color-opt">
     @stack('styles')
+    {!! option('info_scripts_head') !!}
 </head>
 
 <body>
