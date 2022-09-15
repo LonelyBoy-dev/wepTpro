@@ -23,7 +23,7 @@ class PortalSite extends Controller
             $post = Post::where('slug', $slug)->first();
             $link =  $crawler->filter('.card-title.font-weight-bold a')->attr("href");
             session()->put('Tamneel-image',$image);
-            if (empty($post)) {
+            if (!empty($post)) {
 
                 $client = new Client();
                 $inside_post = $client->request('GET', $link);
