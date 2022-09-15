@@ -53,6 +53,7 @@ class AddPost_LearnsourceSite_MobileCat extends Command
                 $inside_post = $client->request('GET', $link);
                 $inside_post->each(function ($item) {
                     $meta_description=$item->filterXpath('//meta[@name="description"]')->attr('content');
+                    $meta_description=htmlentities($meta_description, ENT_QUOTES, "UTF-8");
                     $title = $item->filter('h1')->text();
                     $content = $item->filter('.myContent')->html();
                     $image = session('Tamneel-image');
