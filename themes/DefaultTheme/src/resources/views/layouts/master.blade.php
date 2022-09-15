@@ -20,7 +20,7 @@
             {{ $title }} |
         @endisset
 
-        {{ option('info_site_title', 'لاراول شاپ') }}
+        {{ option('info_site_title', 'webTpro') }}
     </title>
 
     <!-- Font Icon -->

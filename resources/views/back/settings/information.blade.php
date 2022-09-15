@@ -235,7 +235,7 @@
                                             <div class="col-md-6">
                                                 <fieldset class="form-group">
                                                     <label>اسکریپت های اضافه در تگ head</label>
-                                                    <textarea  name="info_scripts" class="form-control ltr" rows="3">{{ option('info_scripts_head') }}</textarea>
+                                                    <textarea  name="info_scripts_head" class="form-control ltr" rows="3">{{ option('info_scripts_head') }}</textarea>
                                                 </fieldset>
                                             </div>
                                         </div>
