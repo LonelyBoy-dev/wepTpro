@@ -232,6 +232,12 @@
                                                     <textarea  name="info_scripts" class="form-control ltr" rows="3">{{ option('info_scripts') }}</textarea>
                                                 </fieldset>
                                             </div>
+                                            <div class="col-md-6">
+                                                <fieldset class="form-group">
+                                                    <label>اسکریپت های اضافه در تگ"<head>"</label>
+                                                    <textarea  name="info_scripts" class="form-control ltr" rows="3">{{ option('info_scripts') }}</textarea>
+                                                </fieldset>
+                                            </div>
                                         </div>
 
                                         <div class="row">
