@@ -16,12 +16,12 @@ class PortalSite extends Controller
     public function index()
     {
         $client = new Client();
-        $crawler = $client->request('GET', 'https://www.kiantc.com/articles');
-        $title = $crawler->filter('.card-title.font-weight-bold a')->text();
+        $crawler = $client->request('GET', 'https://learnsource.net/article/List?order=latest&categoryName=%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C+%D9%88%D8%A8');
+        $title = $crawler->filter('.flex.flex-col a')->text();
         $slug = $this->make_slug($title);
-        $image='https://www.kiantc.com/'.$crawler->filter('.article-col-item .img-fluid')->attr("src");
+        $image='https://learnsource.net'.$crawler->filter('.inline-block.h-40.w-full img')->attr("src");
         $post = Post::where('slug', $slug)->first();
-        $link =  $crawler->filter('.card-title.font-weight-bold a')->attr("href");
+        $link = 'https://learnsource.net' . $crawler->filter('.block.mt-2.tracking-tight.text-base.font-medium.text-gray-700.transition.duration-100')->attr("href");
         session()->put('Tamneel-image',$image);
         if (!empty($post)) {
 
