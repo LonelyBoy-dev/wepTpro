@@ -26,8 +26,8 @@ Route::group(['as' => 'front.'], function () {
 
     // ------------------ posts
     Route::get('blogs/search', [PostController::class, 'search'])->name('blogs.search');
-    Route::get('blogs', [PostController::class,'index']);
-    Route::get('blog/{blog}', [PostController::class,'show']);
+    Route::resource('blogs', PostController::class)->only(['index']);
+    Route::get('blog/{blog}', [PostController::class,'show'])->name('blog.show');
     Route::get('blogs/category/{category}', [PostController::class, 'category'])->name('blogs.category');
     Route::get('blogs/tag/{tag}', [PostController::class, 'tag'])->name('blogs.tag');
     Route::post('blogs/{blog}/comments', [PostController::class, 'comments'])->name('blog.comments');
