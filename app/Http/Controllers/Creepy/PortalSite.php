@@ -23,7 +23,7 @@ class PortalSite extends Controller
         $post = Post::where('slug', $slug)->first();
         $link = 'https://learnsource.net' . $crawler->filter('.block.mt-2.tracking-tight.text-base.font-medium.text-gray-700.transition.duration-100')->attr("href");
         session()->put('Tamneel-image',$image);
-        if (!empty($post)) {
+        if (empty($post)) {
 
                 $client = new Client();
                 $inside_post = $client->request('GET', $link);
