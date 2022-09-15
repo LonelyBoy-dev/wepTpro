@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 class MainController extends Controller
 {
@@ -59,5 +60,14 @@ class MainController extends Controller
         $this->authorize('file-manager');
 
         return view('back.file-manager-iframe');
+    }
+
+    public function cache_clear()
+    {
+        session()->put('cache-clear-success','کش با موفقیت پاک شد');
+        Artisan::call('cache:clear');
+        Artisan::call('route:cache');
+        Artisan::call('view:clear');
+        return redirect()->back();
     }
 }

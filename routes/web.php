@@ -75,6 +75,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin/' . admin_route_prefix(), 'mi
 
     // ------------------ MainController
     Route::get('/', [MainController::class, 'index'])->name('dashboard');
+    Route::get('cache-clear', [MainController::class, 'cache_clear'])->name('cache-clear');
     Route::get('get-tags', [MainController::class, 'get_tags']);
 
     Route::get('notifications', [MainController::class, 'notifications'])->name('notifications');

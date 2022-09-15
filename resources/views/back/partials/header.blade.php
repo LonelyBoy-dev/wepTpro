@@ -24,10 +24,15 @@
                                     src="{{ auth('adminPanel')->user()->imageUrl }}" alt="avatar"
                                     height="40" width="40"></span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="{{ route('admin.admin.profile.show') }}"><i
-                                    class="feather icon-user"></i> ویرایش پروفایل</a>
-                            <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('admin.logout') }}"><i
-                                    class="feather icon-power"></i> خروج</a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="{{ route('admin.admin.profile.show') }}"><i class="feather icon-user"></i> ویرایش پروفایل</a>
+                            <div class="dropdown-divider"></div>
+
+                            @if(Auth::user('adminPanel')->id=='1')
+                            <a class="dropdown-item" href="{{ route('admin.cache-clear') }}"><i class="fa fa-trash"></i>پاک کردن حافظه کش</a>
+                            <div class="dropdown-divider"></div>
+                            @endif
+                            <a class="dropdown-item" href="{{ route('admin.logout') }}"><i class="feather icon-power"></i> خروج</a>
                         </div>
                     </li>
                 </ul>
@@ -35,3 +40,4 @@
         </div>
     </div>
 </nav>
+

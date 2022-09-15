@@ -122,8 +122,12 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('back/assets/js/echo.js') }}"></script>
     <script src="{{ asset('back/assets/js/web-push.js') }}"></script>
-
-
+    @if(session('cache-clear-success'))
+    <script>
+       toastr.success('{{session('cache-clear-success')}}');
+    </script>
+    @endif
+@php session()->forget('cache-clear-success'); @endphp
 </body>
 <!-- END: Body-->
 
