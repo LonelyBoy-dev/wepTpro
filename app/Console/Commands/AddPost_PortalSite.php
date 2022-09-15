@@ -51,7 +51,7 @@ class AddPost_PortalSite extends Command
                 $client = new Client();
                 $inside_post = $client->request('GET', $link);
                 $inside_post->each(function ($item) {
-
+                    $meta_description=$item->filterXpath('//meta[@name="description"]')->attr('content');
                     $title = $item->filter('h1')->text();
                     $content = $item->filter('.blog-single-content')->html();
                     $image = 'https://www.portal.ir/' . $item->filter('.page-header img')->attr("src");
@@ -73,6 +73,8 @@ class AddPost_PortalSite extends Command
                     $post->published = '1';
                     $post->image = $image;
                     $post->content = $content;
+                    $post->meta_title = $title;
+                    $post->meta_description = $meta_description;
                     $post->save();
 
                     $category_id=Category::where('slug',"همه-مقالات")->first();

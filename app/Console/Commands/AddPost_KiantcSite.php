@@ -46,7 +46,7 @@ class AddPost_KiantcSite extends Command
             $client = new Client();
             $inside_post = $client->request('GET', $link);
             $inside_post->each(function ($item) {
-
+                $meta_description=$item->filterXpath('//meta[@name="description"]')->attr('content');
                 $title = $item->filter('h1')->text();
                 $content = $item->filter('.col-md-9.col-12.pr-lg-4.pl-lg-0.d-xl-0 .text-right')->html();
                 $image = session('Tamneel-image');
@@ -68,6 +68,8 @@ class AddPost_KiantcSite extends Command
                 $post->published = '1';
                 $post->image = $image;
                 $post->content = $content;
+                $post->meta_title = $title;
+                $post->meta_description = $meta_description;
                 $post->save();
 
                 $category_id=Category::where('slug',"همه-مقالات")->first();
