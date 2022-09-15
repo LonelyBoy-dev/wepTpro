@@ -28,7 +28,8 @@ class PortalSite extends Controller
                 $client = new Client();
                 $inside_post = $client->request('GET', $link);
                 $inside_post->each(function ($item) {
-
+                    $description=$item->filterXpath('//meta[@name="description"]')->attr('content');
+                    dd($description);
                     $title = $item->filter('h1')->text();
                     $content = $item->filter('.col-md-9.col-12.pr-lg-4.pl-lg-0.d-xl-0 .text-right')->html();
                     $image = session('Tamneel-image');
