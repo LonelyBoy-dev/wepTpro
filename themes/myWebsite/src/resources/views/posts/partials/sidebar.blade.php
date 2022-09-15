@@ -10,10 +10,10 @@
                     <div class="item">
                         <div class="item-inner">
                             <div class="item-thumb">
-                                <a href="{{ route('front.blogs.show', ['blog' => $item]) }}" class="img-holder" style="background-image: url('{{ $item->image ?: theme_asset('images/blog-empty-image.jpg') }}')"></a>
+                                <a href="{{ route('front.blog.show', ['blog' => $item]) }}" class="img-holder" style="background-image: url('{{ $item->image ?: theme_asset('images/blog-empty-image.jpg') }}')"></a>
                             </div>
                             <p class="title">
-                                <a href="{{ route('front.blogs.show', ['blog' => $item]) }}">{{ $item->title }}</a>
+                                <a href="{{ route('front.blog.show', ['blog' => $item]) }}">{{ $item->title }}</a>
                             </p>
                             <div class="item-meta">
                                 <span class="time">{{ verta($item->created_at)->format('%d %B %Y') }}</span>

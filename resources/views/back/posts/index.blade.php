@@ -50,7 +50,7 @@
                                                     <td class="text-center">
                                                         <img class="post-thumb" src="{{ $post->image ? asset($post->image) : asset('/empty.jpg') }}" alt="image">
                                                     </td>
-                                                    <td><span class="d-inline-block">{{ $post->title }}</span> <a href="{{ Route::has('front.posts.show') ? route('front.posts.show', ['post' => $post]) : '' }}" target="_blank"><i class="feather icon-external-link"></i></a></td>
+                                                    <td><span class="d-inline-block">{{ $post->title }}</span> <a href="{{ Route::has('front.blog.show') ? route('front.blog.show', ['blog' => $post]) : '' }}" target="_blank"><i class="feather icon-external-link"></i></a></td>
                                                     <td class="text-center">{{$post->view}}</td>
                                                     <td class="text-center">
                                                         @if($post->published)

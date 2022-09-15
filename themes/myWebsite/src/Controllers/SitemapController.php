@@ -50,7 +50,7 @@ class SitemapController extends Controller
             $posts = Post::published()->latest('updated_at')->get();
             foreach ($posts as $blog) {
                 $sitemap->add(
-                    route('front.blogs.show', ['blog' => $blog]),
+                    route('front.blog.show', ['blog' => $blog]),
                     $blog->updated_at,
                     '0.9',
                     'weekly'

@@ -65,7 +65,7 @@ class Post extends Model
 
     public function link()
     {
-        return route('front.blogs.show', ['blog' => $this]);
+        return route('front.blog.show', ['blog' => $this]);
     }
 
     public function scopePublished($query)

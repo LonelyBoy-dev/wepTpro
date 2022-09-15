@@ -96,7 +96,7 @@ class PortalSite extends Controller
 
         $post = Post::latest()->first();
         if ($post->edit!="YES"){
-            return redirect()->route('front.blogs.show', ['blog' => $post]);
+            return redirect()->route('front.blog.show', ['blog' => $post]);
         }
 
     }
