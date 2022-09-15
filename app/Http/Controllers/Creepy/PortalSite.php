@@ -30,7 +30,7 @@ class PortalSite extends Controller
                 $inside_post->each(function ($item) {
                     $meta_description=$item->filterXpath('//meta[@name="description"]')->attr('content');
                     $meta_description=utf8_encode($meta_description);
-                    dd(bin2hex($meta_description));
+                    dd(htmlentities($meta_description, ENT_QUOTES, "UTF-8"));
                     $title = $item->filter('h1')->text();
                     $content = $item->filter('.col-md-9.col-12.pr-lg-4.pl-lg-0.d-xl-0 .text-right')->html();
                     $image = session('Tamneel-image');
