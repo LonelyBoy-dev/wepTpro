@@ -83,7 +83,7 @@ function get_widget_mySite($widget)
 
         case 'posts': {
             $variables['posts'] = Post::where('published', true)
-                ->orderBy('id', $widget->option('ordering', 'asc'))
+                ->orderBy('id', $widget->option('ordering', 'desc'))
                 ->with('admin','comments')
                 ->take($widget->option('number', 3))
                 ->get();
