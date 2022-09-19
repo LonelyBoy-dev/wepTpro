@@ -41,7 +41,6 @@ class PostController extends Controller
         if ($category->type != 'postcat') {
             abort(404);
         }
-
         $categories_id=PostCategory::where('category_id',$category->id)->get();
         $cat_id=[];
         foreach ($categories_id as $category_id){
