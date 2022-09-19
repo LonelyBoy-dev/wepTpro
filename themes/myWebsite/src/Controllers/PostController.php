@@ -37,6 +37,7 @@ class PostController extends Controller
     public function category(Category $category)
     {
 
+        dd($category);
         if ($category->type != 'postcat') {
             abort(404);
         }
