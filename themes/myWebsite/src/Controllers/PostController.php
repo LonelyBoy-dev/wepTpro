@@ -37,10 +37,11 @@ class PostController extends Controller
     public function category(Category $category)
     {
 
-        dd($category);
+
         if ($category->type != 'postcat') {
             abort(404);
         }
+        dd($category->id);
         $categories_id=PostCategory::where('category_id',$category->id)->get();
         foreach ($categories_id as $category_id){
             $cat_id[]=$category_id->post_id;
