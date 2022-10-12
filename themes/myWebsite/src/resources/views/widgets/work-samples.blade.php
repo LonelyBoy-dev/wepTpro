@@ -22,7 +22,7 @@
                                 <img class="item-container img-fluid mx-auto" src="{{asset($item->image)}}" alt="{{$item->title}}" style="height: 292px"/>
                                 <div class="overlay-work bg-dark"></div>
                                 <div class="content">
-                                    <h6 class="text-light tag mb-0"><a href="{{ route('front.work_sample.show', ['work_sample' => $item]) }}" class="text-white title">{{$item->title}}</a></h6>
+                                    <h6 class="text-light tag mb-0"><a href="{{ route('front.workSample.show', ['work_sample' => $item]) }}" class="text-white title">{{$item->title}}</a></h6>
                                 </div>
                                 <div class="client">
                                     @if($item->applicant)<small class="text-light user d-block"><i class="uil uil-user"></i>{{$item->applicant}}</small>@endif
