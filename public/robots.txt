@@ -1,4 +1,5 @@
 User-agent: *
-Disallow:
-/work-samples
-/blogs
+Disallow:/work-samples
+Disallow:/blogs
+
+
