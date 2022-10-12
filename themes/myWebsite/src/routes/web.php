@@ -34,7 +34,8 @@ Route::group(['as' => 'front.'], function () {
 
     // ------------------ workSample
     Route::get('work-samples/search', [WorkSampleController::class, 'search'])->name('workSample.search');
-    Route::resource('work-samples', WorkSampleController::class)->only(['index', 'show']);
+    Route::resource('work-samples', WorkSampleController::class)->only(['index']);
+    Route::get('work-sample/{work_sample}', [WorkSampleController::class,'show'])->name('workSample.show');
     Route::get('work-samples/category/{category}', [WorkSampleController::class, 'category'])->name('workSample.category');
     Route::get('work-samples/tag/{tag}', [WorkSampleController::class, 'tag'])->name('work-samples.tag');
     Route::post('work-samples/{work_sample}/comments', [WorkSampleController::class, 'comments'])->name('workSample.comments');

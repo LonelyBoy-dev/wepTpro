@@ -44,7 +44,7 @@
                             <img src="{{asset($item->image)}}" class="img-fluid rounded" style="height: 292px" alt=">{{$item->title}}">
                             <div class="overlay-work bg-dark"></div>
                             <div class="content">
-                                <h6 class="text-light tag mb-0 text-right"><a href="{{ route('front.work-samples.show', ['work_sample' => $item]) }}" class="text-white title">{{$item->title}}</a></h6>
+                                <h6 class="text-light tag mb-0 text-right"><a href="{{ route('front.workSample.show', ['work_sample' => $item]) }}" class="text-white title">{{$item->title}}</a></h6>
 
                             </div>
                             <div class="client">

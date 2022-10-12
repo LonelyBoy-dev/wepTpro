@@ -78,7 +78,7 @@ class WorkSample extends Model
 
     public function link()
     {
-        return route('front.work-samples.show', ['work_sample' => $this]);
+        return route('front.work_sample.show', ['work_sample' => $this]);
     }
 
     public function scopePublished($query)
