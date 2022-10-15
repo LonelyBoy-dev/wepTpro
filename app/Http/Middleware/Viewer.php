@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use App\Models\Viewer as ViewerModel;
+use Illuminate\Support\Facades\Cookie;
 use Jenssegers\Agent\Agent;
 
 class Viewer
@@ -17,7 +18,9 @@ class Viewer
      */
     public function handle($request, Closure $next)
     {
-
+        if(!Cookie::get('setCookieTheme')){
+            Cookie::queue('setCookieTheme',  'style-dark',36000*24);
+        }
         if (!application_installed()) {
             return $next($request);
         }
