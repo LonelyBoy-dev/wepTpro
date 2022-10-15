@@ -12,9 +12,7 @@
     display: contents !important;
 }
 
-.post-shadow{
-    box-shadow: 0 0 29px rgb(60 72 88 / 15%) !important
-}
+
 
 .breadcrumb .breadcrumb-item::after {
     content: "\F0142" !important;
