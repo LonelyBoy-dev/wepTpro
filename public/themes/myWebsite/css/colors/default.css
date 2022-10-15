@@ -36,9 +36,7 @@
 .qs-datepicker-container .qs-squares .qs-square.qs-current {
     background-color: #2f55d4 !important;
 }
-.post-shadow{
-    box-shadow: 0 0 29px rgb(60 72 88 / 15%) !important
-}
+
 .text-primary,
 .bg-soft-primary,
 .component-wrapper.sticky-bar li a:hover,
