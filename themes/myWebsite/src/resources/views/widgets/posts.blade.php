@@ -18,7 +18,7 @@
             @foreach ($items as $item)
                 @php $countComment=\App\Models\Comment::where(['commentable_type'=>'App\Models\Post','commentable_id'=>$item->id,'status'=>"accepted",'comment_id'=>null])->count(); @endphp
             <div class="col-lg-4 col-md-6 mt-4 pt-2">
-                <div class="card blog rounded border-0 shadow">
+                <div class="card blog rounded border-0 post-shadow">
                     <div class="position-relative">
                         <img src="{{asset($item->image)}}"  style="height: 200px;" class="card-img-top rounded-top" alt="{{$item->title}}">
                         <div class="overlay rounded-top bg-dark"></div>
