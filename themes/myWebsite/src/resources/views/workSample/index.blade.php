@@ -38,7 +38,7 @@
             @if(count($items))
             <div id="grid" class="row">
                 @foreach($items as $item)
-                <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2 picture-item">
+                <div class="col-lg-4 col-md-6 col-12 mt-4 pt-2 picture-item post-shadow">
                     <div class="card work-container work-modern position-relative overflow-hidden shadow rounded border-0">
                         <div class="card-body p-0 text-center">
                             <img src="{{asset($item->image)}}" class="img-fluid rounded" style="height: 292px" alt=">{{$item->title}}">
