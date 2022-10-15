@@ -17,6 +17,7 @@ class Viewer
      */
     public function handle($request, Closure $next)
     {
+
         if (!application_installed()) {
             return $next($request);
         }

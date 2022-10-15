@@ -31,7 +31,7 @@
     <link href="{{theme_asset('css/materialdesignicons.min.css')}}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{theme_asset('css/line.css')}}">
     <!-- Main Css -->
-    @dd(Cookie::get('setCookieTheme'))
+
     @if(Cookie::get('setCookieTheme'))
     <link href="{{theme_asset('css/'.Cookie::get('setCookieTheme').'.min.css')}}" rel="stylesheet" type="text/css" id="theme-opt" />
      <style> .post-shadow{box-shadow: 0 0 29px rgb(162 165 169 / 22%) !important} </style>
