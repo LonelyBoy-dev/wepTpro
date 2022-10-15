@@ -89,6 +89,7 @@ class MainController extends Controller
 
     public function setCookieTheme(Request $request)
     {
+        dd('vvv');
         Cookie::forget('setCookieTheme');
         Cookie::queue('setCookieTheme',  $request->theme,36000*24);
 
