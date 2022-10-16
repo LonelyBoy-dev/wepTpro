@@ -9,7 +9,7 @@
                 <div class="col-12 text-center">
                     <div class="section-title mb-4 pb-2">
                         <h4 class="title mb-4">{{$widget->option('title')}}</h4>
-                        <p class="text-muted para-desc mb-0 mx-auto">شروع به کار با <span class="text-primary fw-bold">لنـدریـک </span> که می تواند هر آنچه را که شما برای ایجاد آگاهی ، ایجاد ترافیک ، اتصال به آن نیاز دارید فراهم کند.</p>
+                        <p class="text-muted para-desc mb-0 mx-auto">{{$widget->option('titleBot')}}</p>
                     </div>
                 </div><!--end col-->
             </div><!--end row-->

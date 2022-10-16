@@ -14,7 +14,7 @@
                             <p class="text-muted mb-0">{{$widget->option('description')}}</p>
                             @if($widget->option('link'))
                             <div class="mt-4">
-                                <a href="{{$widget->option('link')}}" class="btn btn-primary"><i class="uil uil-phone"></i> تماس با من</a>
+                                <a href="{{$widget->option('link')}}" class="btn btn-primary"><i class="uil uil-phone"></i> تماس با ما</a>
                             </div>
                             @endif
                         </div>
