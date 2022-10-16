@@ -19,7 +19,7 @@
                     <div class="col-lg-4 col-md-6 mt-4 pt-2">
                         <div class="card border-0 work-container work-modern position-relative d-block overflow-hidden rounded post-shadow">
                             <div class="portfolio-box-img position-relative overflow-hidden text-center">
-                                <iframe src="{{$item->link}}" class="item-container img-fluid mx-auto"  style="height: 292px"></iframe>
+                                <iframe src="{{$item->webSite}}" class="item-container img-fluid mx-auto"  style="height: 292px"></iframe>
 {{--                                <img class="item-container img-fluid mx-auto" src="{{asset($item->image)}}" alt="{{$item->title}}" style="height: 292px"/>--}}
                                 <div class="overlay-work bg-dark"></div>
                                 <div class="content">
