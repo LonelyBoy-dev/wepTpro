@@ -47,7 +47,7 @@
                                 <h6 class="text-light tag mb-0 text-right"><a href="{{ route('front.workSample.show', ['work_sample' => $item]) }}" class="text-white title">{{$item->title}}</a></h6>
 
                             </div>
-                            <div class="client">
+                            <div class="client text-right">
                                 @if($item->applicant)<small class="text-light user d-block"><i class="uil uil-user"></i> {{$item->applicant}}</small>@endif
                                 <small class="text-light date"><i class="muil uil-calendar-alt"></i>
                                     @if($item->publish_date)
