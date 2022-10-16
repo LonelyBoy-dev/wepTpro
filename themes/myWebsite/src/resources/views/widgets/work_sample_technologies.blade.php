@@ -5,7 +5,7 @@
 @if ($items->count())
 
     <!-- Client start -->
-    <section class="py-4 border-bottom border-top">
+    <section class="py-4 ">
         <div class="container">
             <div class="row">
                 @foreach($items as $item)
