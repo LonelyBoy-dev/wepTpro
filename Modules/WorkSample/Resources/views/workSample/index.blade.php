@@ -50,7 +50,7 @@
                                                     <td class="text-center">
                                                         <img class="post-thumb" src="{{ $item->image ? asset($item->image) : asset('/empty.jpg') }}" alt="image">
                                                     </td>
-                                                    <td><span class="d-inline-block">{{ $item->title }}</span> <a href="{{ Route::has('front.posts.show') ? route('front.posts.show', ['post' => $item]) : '' }}" target="_blank"><i class="feather icon-external-link"></i></a></td>
+                                                    <td><span class="d-inline-block">{{ $item->title }}</span> <a href="{{  route('front.workSample.show', ['work_sample' => $item])  ?  route('front.workSample.show', ['work_sample' => $item]) : '' }}" target="_blank"><i class="feather icon-external-link"></i></a></td>
                                                     <td>{{ $item->view }}</td>
                                                     <td class="text-center">
                                                         @if($item->published)
@@ -62,7 +62,7 @@
                                                     <td class="text-center">
 
                                                         @can('workSamples.update')
-                                                            <a href="{{ route('admin.workSamples.edit', ['work_sample' => $item]) }}" class="btn btn-success mr-1 waves-effect waves-light">ویرایش</a>
+                                                            <a href="{{ route('admin.work-samples.edit', ['work_sample' => $item]) }}" class="btn btn-success mr-1 waves-effect waves-light">ویرایش</a>
                                                         @endcan
 
                                                         @can('workSamples.delete')
