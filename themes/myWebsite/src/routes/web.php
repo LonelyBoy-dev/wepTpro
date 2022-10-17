@@ -40,18 +40,18 @@ Route::group(['as' => 'front.'], function () {
     Route::get('work-samples/tag/{tag}', [WorkSampleController::class, 'tag'])->name('work-samples.tag');
     Route::post('work-samples/{work_sample}/comments', [WorkSampleController::class, 'comments'])->name('workSample.comments');
     // ------------------ products
-    Route::resource('products', ProductController::class)->only(['show', 'index']);
-    Route::get('products/category/{category}', [ProductController::class, 'category'])->name('products.category');
-    Route::get('products/category-products/{category}', [ProductController::class, 'categoryProducts'])->name('products.category-products');
-    Route::get('products/category-specials/{category}', [ProductController::class, 'categorySpecials'])->name('products.category-specials');
-    Route::get('search', [ProductController::class, 'search'])->name('products.search');
-    Route::post('search', [ProductController::class, 'ajax_search'])->name('products.ajax_search');
-    Route::get('product/specials', [ProductController::class, 'specials'])->name('products.specials');
-    Route::get('product/discount', [ProductController::class, 'discount'])->name('products.discount');
-    Route::get('product/{product}/prices', [ProductController::class, 'prices'])->name('products.prices');
-    Route::get('product/compare/{product1}/{product2?}/{product3?}', [ProductController::class, 'compare'])->name('products.compare');
-    Route::post('product/compare', [ProductController::class, 'similarCompare'])->name('products.similar-compare');
-    Route::get('products/{price}/priceChart', [ProductController::class, 'priceChart'])->name('products.priceChart');
+//    Route::resource('products', ProductController::class)->only(['show', 'index']);
+//    Route::get('products/category/{category}', [ProductController::class, 'category'])->name('products.category');
+//    Route::get('products/category-products/{category}', [ProductController::class, 'categoryProducts'])->name('products.category-products');
+//    Route::get('products/category-specials/{category}', [ProductController::class, 'categorySpecials'])->name('products.category-specials');
+//    Route::get('search', [ProductController::class, 'search'])->name('products.search');
+//    Route::post('search', [ProductController::class, 'ajax_search'])->name('products.ajax_search');
+//    Route::get('product/specials', [ProductController::class, 'specials'])->name('products.specials');
+//    Route::get('product/discount', [ProductController::class, 'discount'])->name('products.discount');
+//    Route::get('product/{product}/prices', [ProductController::class, 'prices'])->name('products.prices');
+//    Route::get('product/compare/{product1}/{product2?}/{product3?}', [ProductController::class, 'compare'])->name('products.compare');
+//    Route::post('product/compare', [ProductController::class, 'similarCompare'])->name('products.similar-compare');
+//    Route::get('products/{price}/priceChart', [ProductController::class, 'priceChart'])->name('products.priceChart');
 
 
     // ------------------ ajax
@@ -74,8 +74,9 @@ Route::group(['as' => 'front.'], function () {
     // ------------------ sitemap
     Route::get('sitemap', [SitemapController::class, 'index']);
     Route::get('sitemap-posts', [SitemapController::class, 'posts']);
-    Route::get('sitemap-pages', [SitemapController::class, 'pages']);
-    Route::get('sitemap-products', [SitemapController::class, 'products']);
+    Route::get('sitemap-workSamples', [SitemapController::class, 'workSamples']);
+    //Route::get('sitemap-pages', [SitemapController::class, 'pages']);
+    //Route::get('sitemap-products', [SitemapController::class, 'products']);
 
     // ------------------ contacts
     Route::resource('contact', ContactController::class)->only(['index', 'store']);
@@ -118,8 +119,8 @@ Route::group(['as' => 'front.'], function () {
         });
 
         // ------------------ products
-        Route::get('products/{price}/download', [ProductController::class, 'download'])->name('products.download');
-        Route::post('products/{product}/comments', [ProductController::class, 'comments'])->name('product.comments');
+//        Route::get('products/{price}/download', [ProductController::class, 'download'])->name('products.download');
+//        Route::post('products/{product}/comments', [ProductController::class, 'comments'])->name('product.comments');
 
 
         // ------------------ favorites

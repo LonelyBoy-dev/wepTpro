@@ -7,6 +7,7 @@ use App\Models\Page;
 use App\Models\Post;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Modules\WorkSample\Entities\WorkSample;
 
 class SitemapController extends Controller
 {
@@ -25,6 +26,13 @@ class SitemapController extends Controller
             );
             $sitemap->add(
                 url()->to('/sitemap-pages'),
+                '2017-08-25T20:10:00+02:00',
+                '0.9',
+                'daily'
+            );
+
+            $sitemap->add(
+                url()->to('/sitemap-workSample'),
                 '2017-08-25T20:10:00+02:00',
                 '0.9',
                 'daily'
@@ -52,6 +60,26 @@ class SitemapController extends Controller
                 $sitemap->add(
                     route('front.blog.show', ['blog' => $blog]),
                     $blog->updated_at,
+                    '0.9',
+                    'weekly'
+                );
+            }
+        }
+
+        return $sitemap->render();
+    }
+
+    public function workSample()
+    {
+        $sitemap = app()->make('sitemap');
+        $sitemap->setCache('laravel.sitemap.workSample', 60);
+
+        if (!$sitemap->isCached()) {
+            $posts = WorkSample::published()->latest('updated_at')->get();
+            foreach ($posts as $item) {
+                $sitemap->add(
+                    route('front.workSample.show', ['work_sample' => $item]),
+                    $item->updated_at,
                     '0.9',
                     'weekly'
                 );
