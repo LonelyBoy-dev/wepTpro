@@ -39,6 +39,7 @@
                                             <tr>
                                                 <th class="text-center">تصویر شاخص</th>
                                                 <th>عنوان</th>
+                                                <th>بازدید</th>
                                                 <th class="text-center">وضعیت</th>
                                                 <th class="text-center">عملیات</th>
                                             </tr>
@@ -50,6 +51,7 @@
                                                         <img class="post-thumb" src="{{ $item->image ? asset($item->image) : asset('/empty.jpg') }}" alt="image">
                                                     </td>
                                                     <td><span class="d-inline-block">{{ $item->title }}</span> <a href="{{ Route::has('front.posts.show') ? route('front.posts.show', ['post' => $item]) : '' }}" target="_blank"><i class="feather icon-external-link"></i></a></td>
+                                                    <td>{{ $item->view }}</td>
                                                     <td class="text-center">
                                                         @if($item->published)
                                                             <div class="badge badge-pill badge-success badge-md">منتشر شده</div>
