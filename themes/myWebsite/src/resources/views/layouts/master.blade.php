@@ -33,7 +33,7 @@
     <!-- Main Css -->
     @if(Cookie::get('setCookieTheme'))
     <link href="{{theme_asset('css/'.Cookie::get('setCookieTheme').'.min.css')}}" rel="stylesheet" type="text/css" id="theme-opt" />
-     <style> .post-shadow{box-shadow: 0 0 29px rgb(162 165 169 / 22%) !important} </style>
+     <style> .post-shadow{box-shadow: 0 0 29px rgb(12 12 12 / 33%) !important} </style>
     @else
     <link href="{{theme_asset('css/style.min.css')}}" rel="stylesheet" type="text/css" id="theme-opt" />
         <style>.post-shadow{box-shadow: 0 0 29px rgb(60 72 88 / 15%) !important}</style>
