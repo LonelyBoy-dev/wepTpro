@@ -62,7 +62,7 @@
                                                     <td class="text-center">
 
                                                         @can('workSamples.update')
-                                                            <a href="{{ route('admin.work-samples.edit', ['work_sample' => $item]) }}" class="btn btn-success mr-1 waves-effect waves-light">ویرایش</a>
+                                                            <a href="{{ route('admin.workSamples.edit', ['work_sample' => $item]) }}" class="btn btn-success mr-1 waves-effect waves-light">ویرایش</a>
                                                         @endcan
 
                                                         @can('workSamples.delete')
