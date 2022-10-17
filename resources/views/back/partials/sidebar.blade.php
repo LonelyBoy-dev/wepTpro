@@ -3,7 +3,8 @@
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto">
                 <a class="navbar-brand" href="{{ url('/') }}" target="_blank">
-                    <h2 class="brand-text mb-0">{{ option('info_site_title', 'لاراول شاپ') }}</h2>
+                    <img height="40" src="{{ asset(option('info_logo', theme_asset('img/logo.png'))) }}" alt="{{ option('info_site_title', 'لوگو سایت') }}">
+
                 </a></li>
         </ul>
     </div>
