@@ -4,7 +4,7 @@
     <meta name="description" content="{{ option('info_short_description') }}">
     <meta name="keywords" content="{{ option('info_tags') }}">
 
-    <script type="application/ld+json">
+{{--    <script type="application/ld+json">
         {
             "@context": "https://schema.org",
             "@type": "WebSite",
@@ -15,7 +15,7 @@
                 "query-input": "required name=search_term_string"
             }
         }
-    </script>
+    </script>--}}
 
 @endpush
 
