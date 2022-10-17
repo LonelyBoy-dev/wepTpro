@@ -18,9 +18,7 @@ class Viewer
      */
     public function handle($request, Closure $next)
     {
-        if(!Cookie::get('setCookieTheme')){
-            Cookie::queue('setCookieTheme',  'style-dark',36000*24);
-        }
+
         if (!application_installed()) {
             return $next($request);
         }
