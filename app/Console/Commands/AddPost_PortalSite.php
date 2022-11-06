@@ -87,6 +87,7 @@ class AddPost_PortalSite extends Command
                         $category->save();
                     }
 
+
                     Post::where('id',$post->id)->update(['image'=>'uploads/Posts/post-id-'.$post->id.'/'.$name]);
 
                     $this->save_images();
@@ -97,6 +98,7 @@ class AddPost_PortalSite extends Command
                         mkdir(public_path('uploads/Posts/post-id-'. $post->id) );
                     }
                     rename($name, public_path('uploads/Posts/post-id-'. $post->id . '/' . $name) );
+                    session()->forget('Tamneel-image');
                 });
 
             }

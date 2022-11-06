@@ -42,7 +42,7 @@ class MyEnvironmentManager extends EnvironmentManager
         $results = trans('installer_messages.environment.success');
 
         $envFileData =
-            'APP_NAME=\'' . 'laravel-shop' . "'\n" .
+            'APP_NAME=\'' . 'webTpro' . "'\n" .
             'APP_ENV=' . 'local' . "\n" .
             'APP_KEY=' . 'base64:' . base64_encode(Str::random(32)) . "\n" .
             'APP_DEBUG=' . 'false' . "\n" .
